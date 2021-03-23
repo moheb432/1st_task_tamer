@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-
-
+import csv as c
+import numpy as np
 class Ui_mainwindow(object):
     def setupUi(self, mainwindow):
         mainwindow.setObjectName("mainwindow")
@@ -131,9 +131,11 @@ class Ui_mainwindow(object):
         self.actionhelp_2.setText(_translate("mainwindow", "help "))
         self.about.setText(_translate("mainwindow", "about"))
 #open channels 2 zoom navigation moheb + rannia *********************************************
-
-
-
+data=np.genfromtxt(r"C:\Users\Lenovo\Desktop\OD\Multi-Channel-Signals-Viewer-master\emg.csv",delimiter = ' ')
+x1=data[: , 0]
+y1 =data[: , 1]
+x1= list(x1[:])
+y1= list(y1[:])
 
 
 
@@ -149,7 +151,7 @@ class Ui_mainwindow(object):
 
 
 #spectogram
- 
+
 
 
 if __name__ == "__main__":
