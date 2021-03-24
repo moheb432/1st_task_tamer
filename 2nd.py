@@ -161,19 +161,22 @@ class Ui_mainwindow(object):
 
         self.retranslateUi(mainwindow)
         QtCore.QMetaObject.connectSlotsByName(mainwindow)
-    def play(self):
+    def read_data(self):
         data=np.genfromtxt(r"C:\Users\Lenovo\Desktop\OD\Multi-Channel-Signals-Viewer-master\emg.csv",delimiter = ' ')
         x1=data[: , 0]
         y1 =data[: , 1]
-        x1= list(x1[:])
-        y1= list(y1[:])
-        time.sleep(1)
-        if (1) :
-            self.graphicsView.plot(x1,y1)
-        elif(1):
-            self.graphicsView_3.plot(x1,y1)
-        elif(1):
-            self.graphicsView_2.plot(x1,y1)
+        self.x1= list(x1[:])
+        self.y1= list(y1[:])
+
+    def play1(self):
+        self.read_data()
+        self.graphicsView.plot(self.x1,self.y1,pen=pg.mkPen('b', width=1))
+    def play2(self):
+        self.read_data()
+        self.graphicsView_3.plot(self.x1,self.y1,pen=pg.mkPen('r', width=1))
+    def play3(self):
+        self.read_data()
+        self.graphicsView_2.plot(self.x1,self.y1,pen=pg.mkPen('g', width=1))
 
     def retranslateUi(self, mainwindow):
         _translate = QtCore.QCoreApplication.translate
@@ -202,8 +205,11 @@ class Ui_mainwindow(object):
         self.close.setText(_translate("mainwindow", "close "))
         self.actionhelp_2.setText(_translate("mainwindow", "help "))
         self.about.setText(_translate("mainwindow", "about"))
-        #rannia + moheb
-        self.resume.clicked.connect(lambda:self.play())
+        #actions
+
+        self.resume.clicked.connect(lambda:self.play1())
+        self.clear.clicked.connect(lambda:self.play2())
+        self.open_ch1.triggered.connect(lambda:self.play3())
 
 
 if __name__ == "__main__":
