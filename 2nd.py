@@ -17,7 +17,6 @@ import pyqtgraph as pg
 from pyqtgraph import PlotWidget
 import time
 import datetime
-
 class Ui_mainwindow(object):
     def setupUi(self, mainwindow):
         mainwindow.setObjectName("mainwindow")
@@ -158,25 +157,80 @@ class Ui_mainwindow(object):
         self.menubar.addAction(self.open_ch3.menuAction())
         self.menubar.addAction(self.spect.menuAction())
         self.menubar.addAction(self.help.menuAction())
+        #timer for qt
+        self.timer1 = QtCore.QTimer()
+        self.timer2 = QtCore.QTimer()
+        self.timer3 = QtCore.QTimer()
+
 
         self.retranslateUi(mainwindow)
         QtCore.QMetaObject.connectSlotsByName(mainwindow)
-    def read_data(self):
-        data=np.genfromtxt(r"C:\Users\Lenovo\Desktop\OD\Multi-Channel-Signals-Viewer-master\emg.csv",delimiter = ' ')
+
+
+#reading dataaa ************************
+    def read_data(self,ch):
+        data=np.genfromtxt(r"C:\Users\Lenovo\Desktop\1st_task_tamer\emg.csv",delimiter = ' ')
         x1=data[: , 0]
         y1 =data[: , 1]
-        self.x1= list(x1[:])
-        self.y1= list(y1[:])
+        if ch==1:
+            self.x1= list(x1[:])
+            self.y1= list(y1[:])
+        if ch==2:
+            self.x2= list(x1[:])
+            self.y2= list(y1[:])
+        if ch==3:
+            self.x3= list(x1[:])
+            self.y3= list(y1[:])
+#function in qt timer to update the data
+    def update1(self):
+        if self.st_x1>len(self.x1):
+            self.st_x1=10
+        x=self.x1[:self.st_x1]
+        y=self.y1[:self.st_x1]
+        self.st_x1+=10
+        self.graphicsView.plot(x,y,pen=pg.mkPen('b', width=1))
+    def update2(self):
+            x=self.x2[:self.st_x2]
+            y=self.y2[:self.st_x2]
+            self.st_x2+=10
+            self.graphicsView_3.plot(x,y,pen=pg.mkPen('r', width=2))
+            if self.st_x2>len(self.x2):
+                self.st_x2=0
+    def update3(self):
+            x=self.x3[:self.st_x3]
+            y=self.y3[:self.st_x3]
+            self.st_x3+=10
+            self.graphicsView_2.plot(x,y,pen=pg.mkPen('g', width=3))
+            if self.st_x3>len(self.x3):
+                self.st_x3=0
+#playing data on adding the file
 
     def play1(self):
-        self.read_data()
-        self.graphicsView.plot(self.x1,self.y1,pen=pg.mkPen('b', width=1))
+        self.read_data(1)
+        self.timer1.start()
+        self.st_x1=10
+        self.timer1.setInterval(100)
+        self.timer1.timeout.connect(self.update1)
+        self.timer1.start()
+
     def play2(self):
-        self.read_data()
-        self.graphicsView_3.plot(self.x1,self.y1,pen=pg.mkPen('r', width=1))
+        self.read_data(2)
+        self.timer2.start()
+        self.st_x2=10
+        self.timer2.setInterval(100)
+        self.timer2.timeout.connect(self.update2)
+        self.timer2.start()
+
     def play3(self):
-        self.read_data()
-        self.graphicsView_2.plot(self.x1,self.y1,pen=pg.mkPen('g', width=1))
+        self.read_data(3)
+        self.timer3.start()
+        self.st_x3=10
+        self.timer3.setInterval(100)
+        self.timer3.timeout.connect(self.update3)
+        self.timer3.start()
+
+
+
 
     def retranslateUi(self, mainwindow):
         _translate = QtCore.QCoreApplication.translate
@@ -208,8 +262,8 @@ class Ui_mainwindow(object):
         #actions
 
         self.resume.clicked.connect(lambda:self.play1())
-        self.clear.clicked.connect(lambda:self.play2())
-        self.open_ch1.triggered.connect(lambda:self.play3())
+        self.pause.clicked.connect(lambda:self.play2())
+        self.clear.clicked.connect(lambda:self.play3())
 
 
 if __name__ == "__main__":
