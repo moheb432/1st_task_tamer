@@ -108,14 +108,6 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.verticalLayout_4.setObjectName("verticalLayout_4")
 
 
-        self.resume = QtWidgets.QPushButton(self.centralwidget)
-        self.resume.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.resume.setObjectName("resume")
-        self.verticalLayout_3.addWidget(self.resume)
-        self.pause = QtWidgets.QPushButton(self.centralwidget)
-        self.pause.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.pause.setObjectName("pause")
-        self.verticalLayout_3.addWidget(self.pause)
         self.clear = QtWidgets.QPushButton(self.centralwidget)
         self.clear.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.clear.setObjectName("clear")
@@ -179,7 +171,8 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.zoomout1 = QtWidgets.QPushButton(self.centralwidget)
         self.zoomout1.setObjectName("zoomout1")
         self.horizontalLayout.addWidget(self.zoomout1)
-       
+
+
         self.zoomin2 = QtWidgets.QPushButton(self.centralwidget)
         self.zoomin2.setObjectName("zoomin2")
         self.horizontalLayout_2.addWidget(self.zoomin2)
@@ -194,6 +187,66 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.zoomout3.setObjectName("zoomout3")
         self.horizontalLayout_3.addWidget(self.zoomout3)
 
+
+        self.verticalLayoutWidget_7 = QtWidgets.QWidget(self.centralwidget)
+        self.verticalLayoutWidget_7.setGeometry(QtCore.QRect(1150, 80, 95, 71))
+        self.verticalLayoutWidget_7.setObjectName("verticalLayoutWidget_7")
+        self.verticalLayout_16 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_7)
+        self.verticalLayout_16.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_16.setObjectName("verticalLayout_16")
+
+        self.resume1 = QtWidgets.QPushButton(self.verticalLayoutWidget_7)
+        self.resume1.setText("")
+        self.resume1.setObjectName("resume1")
+        self.verticalLayout_16.addWidget(self.resume1)
+        self.pause1 = QtWidgets.QPushButton(self.verticalLayoutWidget_7)
+        self.pause1.setText("")
+        self.pause1.setObjectName("pause1")
+        #adding icons
+        self.pause1.setIcon(QtGui.QIcon("pause.png"))
+        self.resume1.setIcon(QtGui.QIcon("play.png"))
+
+
+        self.verticalLayout_16.addWidget(self.pause1)
+        self.verticalLayoutWidget_8 = QtWidgets.QWidget(self.centralwidget)
+        self.verticalLayoutWidget_8.setGeometry(QtCore.QRect(1150, 250, 95, 71))
+        self.verticalLayoutWidget_8.setObjectName("verticalLayoutWidget_8")
+        self.verticalLayout_17 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_8)
+        self.verticalLayout_17.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_17.setObjectName("verticalLayout_17")
+        self.resume2 = QtWidgets.QPushButton(self.verticalLayoutWidget_8)
+        self.resume2.setText("")
+        self.resume2.setObjectName("resume2")
+        self.verticalLayout_17.addWidget(self.resume2)
+        self.pause2 = QtWidgets.QPushButton(self.verticalLayoutWidget_8)
+        self.pause2.setText("")
+        self.pause2.setObjectName("pause2")
+        self.verticalLayout_17.addWidget(self.pause2)
+        #adding icons
+        self.pause2.setIcon(QtGui.QIcon("pause.png"))
+        self.resume2.setIcon(QtGui.QIcon("play.png"))
+
+        self.verticalLayout_17.addWidget(self.pause2)
+        self.verticalLayoutWidget_9 = QtWidgets.QWidget(self.centralwidget)
+        self.verticalLayoutWidget_9.setGeometry(QtCore.QRect(1150, 410, 95, 71))
+        self.verticalLayoutWidget_9.setObjectName("verticalLayoutWidget_9")
+        self.verticalLayout_18 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_9)
+        self.verticalLayout_18.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_18.setObjectName("verticalLayout_18")
+
+        self.resume3 = QtWidgets.QPushButton(self.verticalLayoutWidget_9)
+        self.resume3.setText("")
+        self.resume3.setObjectName("resume3")
+        self.verticalLayout_18.addWidget(self.resume3)
+        self.pause3 = QtWidgets.QPushButton(self.verticalLayoutWidget_9)
+        self.pause3.setText("")
+        self.pause3.setObjectName("pause3")
+        self.verticalLayout_18.addWidget(self.pause3)
+        mainwindow.setCentralWidget(self.centralwidget)
+        #adding icons
+        self.pause3.setIcon(QtGui.QIcon("pause.png"))
+        self.resume3.setIcon(QtGui.QIcon("play.png"))
+
         self.retranslateUi(mainwindow)
         QtCore.QMetaObject.connectSlotsByName(mainwindow)
 
@@ -207,7 +260,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
 
 #reading dataaa ************************
     def read_data(self,ch):
-        loadSignal= QtGui.QFileDialog.getOpenFileName( self, 'Open only txt or CSV or xls', os.getenv('HOME') ,"csv(*.csv)")
+        loadSignal= QtGui.QFileDialog.getOpenFileName( self, 'Open only CSV ', os.getenv('HOME') ,"csv(*.csv)")
         path=loadSignal[0]
         data=np.genfromtxt(path,delimiter = ' ')
         x1=data[: , 0]
@@ -269,19 +322,14 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.timer3.timeout.connect(self.update3)
         self.timer3.start()
 
-
-#pause
-    def stop(self):
-        self.timer1.stop()
-        self.timer2.stop()
-        self.timer3.stop()
-
 #to clear data
     def delete(self):
         self.graphicsView.clear()
         self.graphicsView_2.clear()
         self.graphicsView_3.clear()
-        self.stop()
+        self.timer1.stop()
+        self.timer2.stop()
+        self.timer3.stop()
 
 
     def retranslateUi(self, mainwindow):
@@ -291,9 +339,8 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.show_ch2.setText(_translate("mainwindow", "Channel 2"))
         self.show_ch3.setText(_translate("mainwindow", "Channel 3"))
         self.show_spect.setText(_translate("mainwindow", "Spectrogram"))
-        self.resume.setText(_translate("mainwindow", "play"))
-        self.pause.setText(_translate("mainwindow", "pause"))
-        self.clear.setText(_translate("mainwindow", "clear"))
+
+        self.clear.setText(_translate("mainwindow", "clear all"))
         self.menusignal_processing.setTitle(_translate("mainwindow", "file"))
         self.ch1.setTitle(_translate("mainwindow", "Channel 1"))
         self.ch2.setTitle(_translate("mainwindow", "Channel 2"))
@@ -313,23 +360,27 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.zoomout2.setText(_translate("mainwindow", "-"))
         self.zoomin3.setText(_translate("mainwindow", "+"))
         self.zoomout3.setText(_translate("mainwindow", "-"))
-        
 
 
-        #actions
 
-        self.resume.clicked.connect(lambda:self.play1())
+        #resume buttoms actions
+        self.resume1.clicked.connect(lambda :self.timer1.start())
+        self.resume2.clicked.connect(lambda :self.timer3.start())
+        self.resume3.clicked.connect(lambda :self.timer2.start())
 
-        self.pause.clicked.connect(lambda:self.stop())
+        self.pause1.clicked.connect(lambda :self.timer1.stop())
+        self.pause2.clicked.connect(lambda :self.timer3.stop())
+        self.pause3.clicked.connect(lambda :self.timer2.stop())
+
 
         self.clear.clicked.connect(lambda:self.delete())
 
             ############## Hilal Events #############
         self.close.triggered.connect(sys.exit)
         self.about.triggered.connect(self.showDialog)
-        self.open_ch1.triggered.connect(lambda: self.read_data(1))
-        self.open_ch2.triggered.connect(lambda: self.read_data(2))
-        self.open_ch3.triggered.connect(lambda: self.read_data(3))
+        self.open_ch1.triggered.connect(lambda: self.play1())
+        self.open_ch2.triggered.connect(lambda: self.play3())
+        self.open_ch3.triggered.connect(lambda: self.play2())
 
         self.show_ch1.stateChanged.connect(lambda: self.hide(self.show_ch1,self.graphicsView))
         self.show_ch2.stateChanged.connect(lambda: self.hide(self.show_ch2,self.graphicsView_2))
@@ -346,7 +397,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
         pass
 
      #About message
-    def showDialog(self):    
+    def showDialog(self):
         QMessageBox.information(self,"About","Signal Viewer is a software for visualizing signals \n (c) 2021 SBME Cairo University")
 
      #Hide Channel function
