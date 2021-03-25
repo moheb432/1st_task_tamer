@@ -166,10 +166,10 @@ class Ui_mainwindow(object):
         self.retranslateUi(mainwindow)
         QtCore.QMetaObject.connectSlotsByName(mainwindow)
 
-
 #reading dataaa ************************
     def read_data(self,ch):
-        data=np.genfromtxt(r"C:\Users\Lenovo\Desktop\1st_task_tamer\emg.csv",delimiter = ' ')
+        path=str(r"C:\Users\Lenovo\Desktop\1st_task_tamer\emg.csv")
+        data=np.genfromtxt(path,delimiter = ' ')
         x1=data[: , 0]
         y1 =data[: , 1]
         if ch==1:
@@ -230,6 +230,19 @@ class Ui_mainwindow(object):
         self.timer3.start()
 
 
+#pause
+    def stop(self):
+        self.timer1.stop()
+        self.timer2.stop()
+        self.timer3.stop()
+
+#to clear data
+    def delete(self):
+        self.graphicsView.clear()
+        self.graphicsView_2.clear()
+        self.graphicsView_3.clear()
+        self.stop()
+
 
 
     def retranslateUi(self, mainwindow):
@@ -262,8 +275,10 @@ class Ui_mainwindow(object):
         #actions
 
         self.resume.clicked.connect(lambda:self.play1())
-        self.pause.clicked.connect(lambda:self.play2())
-        self.clear.clicked.connect(lambda:self.play3())
+
+        self.pause.clicked.connect(lambda:self.stop())
+
+        self.clear.clicked.connect(lambda:self.delete())
 
 
 if __name__ == "__main__":
