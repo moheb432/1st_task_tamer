@@ -18,6 +18,10 @@ import pyqtgraph as pg
 from pyqtgraph import PlotWidget
 import time
 import datetime
+import matplotlib.pyplot as plot
+import pandas as pd 
+from matplotlib.backends.backend_pdf import PdfPages
+from scipy import signal 
 
 
 class Ui_mainwindow(QtGui.QMainWindow):  
@@ -422,7 +426,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.show_ch1.stateChanged.connect(lambda: self.hide(self.show_ch1,self.graphicsView))
         self.show_ch2.stateChanged.connect(lambda: self.hide(self.show_ch2,self.graphicsView_2))
         self.show_ch3.stateChanged.connect(lambda: self.hide(self.show_ch3,self.graphicsView_3))
-        self.show_spect.stateChanged.connect(lambda: self.hide(self.show_spect,self.graphicsView_4))
+        self.show_spect.stateChanged.connect(lambda: self.hide(self.show_spect,self.tabWidget))
 
         ############## Hilal Functions ################
 
@@ -450,6 +454,9 @@ class Ui_mainwindow(QtGui.QMainWindow):
 
 
 ############################## end hilal #####################################
+
+
+   
 
 
 
