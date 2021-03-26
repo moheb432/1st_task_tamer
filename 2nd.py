@@ -20,8 +20,9 @@ import time
 import datetime
 
 
-class Ui_mainwindow(object):
+class Ui_mainwindow(QtGui.QMainWindow):  
     def setupUi(self, mainwindow):
+
         mainwindow.setObjectName("mainwindow")
         mainwindow.setEnabled(True)
         mainwindow.resize(1486, 920)
@@ -289,7 +290,7 @@ class Ui_mainwindow(object):
 
 #reading dataaa ************************
     def read_data(self,ch):
-        loadSignal= QtGui.QFileDialog.getOpenFileName( self, 'Open only CSV ', os.getenv('HOME') ,"csv(*.csv)")
+        loadSignal= QtGui.QFileDialog.getOpenFileName( self, 'Select Signal', os.getenv('HOME') ,"csv(*.csv)")
         path=loadSignal[0]
         data=np.genfromtxt(path,delimiter = ' ')
         x1=data[: , 0]
@@ -312,19 +313,19 @@ class Ui_mainwindow(object):
         self.st_x1+=10
         self.graphicsView.plot(x,y,pen=pg.mkPen('b', width=1))
     def update2(self):
-            x=self.x2[:self.st_x2]
-            y=self.y2[:self.st_x2]
-            self.st_x2+=10
-            self.graphicsView_3.plot(x,y,pen=pg.mkPen('r', width=2))
-            if self.st_x2>len(self.x2):
-                self.st_x2=0
+        x=self.x2[:self.st_x2]
+        y=self.y2[:self.st_x2]
+        self.st_x2+=10
+        self.graphicsView_3.plot(x,y,pen=pg.mkPen('r', width=2))
+        if self.st_x2>len(self.x2):
+            self.st_x2=0
     def update3(self):
-            x=self.x3[:self.st_x3]
-            y=self.y3[:self.st_x3]
-            self.st_x3+=10
-            self.graphicsView_2.plot(x,y,pen=pg.mkPen('g', width=3))
-            if self.st_x3>len(self.x3):
-                self.st_x3=0
+        x=self.x3[:self.st_x3]
+        y=self.y3[:self.st_x3]
+        self.st_x3+=10
+        self.graphicsView_2.plot(x,y,pen=pg.mkPen('g', width=3))
+        if self.st_x3>len(self.x3):
+            self.st_x3=0
 #playing data on adding the file
 
     def play1(self):
@@ -397,7 +398,6 @@ class Ui_mainwindow(object):
         self.open_ch2.setText(_translate("mainwindow", "load signal"))
         self.open_ch3.setText(_translate("mainwindow", "load signal"))
         self.about.setText(_translate("mainwindow", "About"))
-
 
 
         #resume buttoms actions
