@@ -19,12 +19,12 @@ from pyqtgraph import PlotWidget
 import time
 import datetime
 import matplotlib.pyplot as plot
-import pandas as pd 
+import pandas as pd
 from matplotlib.backends.backend_pdf import PdfPages
-from scipy import signal 
+from scipy import signal
 
 
-class Ui_mainwindow(QtGui.QMainWindow):  
+class Ui_mainwindow(QtGui.QMainWindow):
     def setupUi(self, mainwindow):
 
         mainwindow.setObjectName("mainwindow")
@@ -126,6 +126,16 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.zoomout2 = QtWidgets.QPushButton(self.centralwidget)
         self.zoomout2.setObjectName("zoomout2")
         self.horizontalLayout_2.addWidget(self.zoomout2)
+        self.a1=0
+        self.b1=0
+        self.c1=1
+        self.d1=0
+        self.a2=0
+        self.b2=0
+        self.c2=1
+        self.a3=0
+        self.b3=0
+        self.c3=1
         self.verticalLayout_4.addLayout(self.horizontalLayout_2)
         self.horizontalLayout_8.addLayout(self.verticalLayout_4)
         self.verticalLayout_7.addLayout(self.horizontalLayout_8)
@@ -294,20 +304,25 @@ class Ui_mainwindow(QtGui.QMainWindow):
 
 #reading dataaa ************************
     def read_data(self,ch):
-        loadSignal= QtGui.QFileDialog.getOpenFileName( self, 'Select Signal', os.getenv('HOME') ,"csv(*.csv)")
+        loadSignal= QtGui.QFileDialog.getOpenFileName( self, 'Open only CSV ', os.getenv('HOME') ,"csv(*.csv)")
         path=loadSignal[0]
         data=np.genfromtxt(path,delimiter = ' ')
         x1=data[: , 0]
-        y1 =data[: , 1]
         if ch==1:
+            self.y1_array =data[: , 1]
             self.x1= list(x1[:])
-            self.y1= list(y1[:])
+            self.y1= list(self.y1_array [:])
+            self.ch1=1
         if ch==2:
+            self.y2_array =data[: , 1]
             self.x2= list(x1[:])
-            self.y2= list(y1[:])
+            self.y2= list(self.y2_array [:])
+            self.ch2=1
         if ch==3:
+            self.y3_array =data[: , 1]
             self.x3= list(x1[:])
-            self.y3= list(y1[:])
+            self.y3= list(self.y3_array [:])
+            self.ch3=1
 #function in qt timer to update the data
     def update1(self):
         if self.st_x1>len(self.x1):
@@ -355,8 +370,89 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.timer3.setInterval(100)
         self.timer3.timeout.connect(self.update3)
         self.timer3.start()
+#zooming
+    def zi_1(self):
+        self.a1= self.a1 + 1
+        if(self.b1 < 3):
+            self.c1 =1 - self.a1 *0.2
+            self.c1=abs(self.c1)
+            self.b1+=1
+
+        self.graphicsView.setXRange(0,self.c1)
+        self.graphicsView.setYRange(0,self.c1)
+
+    def zi_2(self):
+        self.a2= self.a2 + 1
+        if(self.b2 < 3):
+            self.c2 =1 - self.a2 *0.2
+            self.c2=abs(self.c2)
+            self.b2+=1
+
+        self.graphicsView_2.setXRange(0,self.c2)
+        self.graphicsView_2.setYRange(0,self.c2)
+
+
+
+
+    def zi_3(self):
+        self.a3= self.a3 + 1
+        if(self.b3 < 3):
+            self.c3 =1 - self.a3 *0.2
+            self.c3=abs(self.c3)
+            self.b3+=1
+
+        self.graphicsView_3.setXRange(0,self.c3)
+        self.graphicsView_3.setYRange(0,self.c3)
+
+
+    def zo_1(self):
+        if(self.b1 >0):
+            self.c1 +=0.2
+            self.b1-=1
+        self.graphicsView.setXRange(0,self.c1)
+        # self.graphicsView.setYRange(0,self.c1)
+
+
+    def zo_2(self):
+        if(self.b2 >0):
+            self.c2 +=0.2
+            self.b2-=1
+        self.graphicsView_2.setXRange(0,self.c2)
+        # self.graphicsView_2.setYRange(0,self.c2)
+
+
+
+    def zo_3(self):
+        if(self.b3 >0):
+            self.c3 +=0.2
+            self.b3-=1
+        self.graphicsView_3.setXRange(0,self.c3)
+        # self.graphicsView_3.setYRange(0,self.c3)
+
+#saving data
+    def savepdf(self) :
+         fig=plot.figure()
+         if self.ch1==1:
+             plot.subplot(2, 3, 1)
+             plot.plot(self.x1,self.y1)
+             plot.subplot(2, 3, 4)
+             Pxx, freqs, bins, im = plot.specgram(self.y1_array)
+         if self.ch2==1:
+             plot.subplot(2, 3, 2)
+             plot.plot(self.x2,self.y2)
+             plot.subplot(2, 3, 5)
+             Pxx, freqs, bins, im = plot.specgram(self.y2_array)
+         if self.ch3==1:
+             plot.subplot(2, 3, 3)
+             plot.plot(self.x3,self.y3)
+             plot.subplot(2, 3, 6)
+             Pxx, freqs, bins, im = plot.specgram(self.y3_array)
+
+         plot.show()
+         fig.savefig("x.pdf")
 
 #to clear data
+
     def delete(self):
         self.graphicsView.clear()
         self.graphicsView_2.clear()
@@ -413,6 +509,18 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.pause2.clicked.connect(lambda :self.timer3.stop())
         self.pause3.clicked.connect(lambda :self.timer2.stop())
 
+        self.zoomin1.clicked.connect(lambda :self.zi_1())
+        self.zoomin2.clicked.connect(lambda :self.zi_2())
+        self.zoomin3.clicked.connect(lambda :self.zi_3())
+        self.zoomout1.clicked.connect(lambda :self.zo_1())
+        self.zoomout2.clicked.connect(lambda :self.zo_2())
+        self.zoomout3.clicked.connect(lambda :self.zo_3())
+
+
+        #aaahoooooooooooooooooooooo       ******************
+        # self.savepdf.triggered.connect(lambda:self.savepdf())
+        #************************************ysksh tshofooooo
+
 
         self.clear.clicked.connect(lambda:self.delete())
 
@@ -427,6 +535,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.show_ch2.stateChanged.connect(lambda: self.hide(self.show_ch2,self.graphicsView_2))
         self.show_ch3.stateChanged.connect(lambda: self.hide(self.show_ch3,self.graphicsView_3))
         self.show_spect.stateChanged.connect(lambda: self.hide(self.show_spect,self.tabWidget))
+
 
         ############## Hilal Functions ################
 
@@ -456,7 +565,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
 ############################## end hilal #####################################
 
 
-   
+
 
 
 
