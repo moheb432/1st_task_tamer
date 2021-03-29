@@ -434,6 +434,8 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.timer1.start()
         self.st_x1=10
         self.timer1.setInterval(100)
+        
+        self.graphicsView.setXRange(0,1)
         self.timer1.timeout.connect(self.update1)
         self.timer1.start()
 
@@ -442,6 +444,8 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.timer2.start()
         self.st_x2=10
         self.timer2.setInterval(100)
+        
+        self.graphicsView_2.setXRange(0,1)
         self.timer2.timeout.connect(self.update2)
         self.timer2.start()
 
@@ -450,6 +454,8 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.timer3.start()
         self.st_x3=10
         self.timer3.setInterval(100)
+        
+        self.graphicsView_3.setXRange(0,1)
         self.timer3.timeout.connect(self.update3)
         self.timer3.start()
 #zooming
