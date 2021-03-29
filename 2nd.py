@@ -333,14 +333,14 @@ class Ui_mainwindow(QtGui.QMainWindow):
         x=self.x2[:self.st_x2]
         y=self.y2[:self.st_x2]
         self.st_x2+=10
-        self.graphicsView_3.plot(x,y,pen=pg.mkPen('r', width=2))
+        self.graphicsView_2.plot(x,y,pen=pg.mkPen('r', width=2))
         if self.st_x2>len(self.x2):
             self.st_x2=0
     def update3(self):
         x=self.x3[:self.st_x3]
         y=self.y3[:self.st_x3]
         self.st_x3+=10
-        self.graphicsView_2.plot(x,y,pen=pg.mkPen('g', width=3))
+        self.graphicsView_3.plot(x,y,pen=pg.mkPen('g', width=3))
         if self.st_x3>len(self.x3):
             self.st_x3=0
 #playing data on adding the file
@@ -370,37 +370,28 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.timer3.start()
 #zooming
     def zi_1(self):
-        self.a1= self.a1 + 1
         if(self.b1 < 3):
-            self.c1 =1 - self.a1 *0.2
+            self.c1 -= 0.2
             self.c1=abs(self.c1)
             self.b1+=1
-
         self.graphicsView.setXRange(0,self.c1)
-        # self.graphicsView.setYRange(0,self.c1)
-
+        
     def zi_2(self):
-        self.a2= self.a2 + 1
         if(self.b2 < 3):
-            self.c2 =1 - self.a2 *0.2
+            self.c2 -=0.2
             self.c2=abs(self.c2)
             self.b2+=1
-
         self.graphicsView_2.setXRange(0,self.c2)
-        # self.graphicsView_2.setYRange(0,self.c2)
-
 
 
 
     def zi_3(self):
         self.a3= self.a3 + 1
         if(self.b3 < 3):
-            self.c3 =1 - self.a3 *0.2
+            self.c3 -= 0.2
             self.c3=abs(self.c3)
             self.b3+=1
-
         self.graphicsView_3.setXRange(0,self.c3)
-        # self.graphicsView_3.setYRange(0,self.c3)
 
 
     def zo_1(self):
@@ -408,16 +399,12 @@ class Ui_mainwindow(QtGui.QMainWindow):
             self.c1 +=0.2
             self.b1-=1
         self.graphicsView.setXRange(0,self.c1)
-        # self.graphicsView.setYRange(0,self.c1)
-
 
     def zo_2(self):
         if(self.b2 >0):
             self.c2 +=0.2
             self.b2-=1
         self.graphicsView_2.setXRange(0,self.c2)
-        # self.graphicsView_2.setYRange(0,self.c2)
-
 
 
     def zo_3(self):
@@ -425,8 +412,6 @@ class Ui_mainwindow(QtGui.QMainWindow):
             self.c3 +=0.2
             self.b3-=1
         self.graphicsView_3.setXRange(0,self.c3)
-        # self.graphicsView_3.setYRange(0,self.c3)
-
 #saving data
     def savepdf(self) :
          fig=plot.figure()
@@ -529,8 +514,8 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.close.triggered.connect(sys.exit)
         self.about.triggered.connect(self.showDialog)
         self.open_ch1.triggered.connect(lambda: self.play1())
-        self.open_ch2.triggered.connect(lambda: self.play3())
-        self.open_ch3.triggered.connect(lambda: self.play2())
+        self.open_ch2.triggered.connect(lambda: self.play2())
+        self.open_ch3.triggered.connect(lambda: self.play3())
 
         self.show_ch1.stateChanged.connect(lambda: self.hide1(self.show_ch1,self.graphicsView))
         self.show_ch2.stateChanged.connect(lambda: self.hide2(self.show_ch2,self.graphicsView_2))
