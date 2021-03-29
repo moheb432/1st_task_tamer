@@ -442,7 +442,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.sc_y3=0
 
         self.retranslateUi(mainwindow)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(mainwindow)
 
         #timer for qt
@@ -609,9 +609,10 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.spectView_3.clear()
 
 
-    def retranslateUi(self, mainwindow):    
+    def retranslateUi(self, mainwindow): 
         THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
         _translate = QtCore.QCoreApplication.translate
+        mainwindow.showMaximized()
         mainwindow.setWindowTitle(_translate("mainwindow", "MainWindow"))
         self.show_ch1.setText(_translate("mainwindow", "Channel 1"))
         self.show_ch2.setText(_translate("mainwindow", "Channel 2"))
