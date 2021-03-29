@@ -363,6 +363,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.horizontalLayout_11.addLayout(self.horizontalLayout_10)
         self.clear = QtWidgets.QPushButton(self.centralwidget)
         self.clear.setMinimumSize(QtCore.QSize(120, 100))
+        self.clear.setMaximumSize(QtCore.QSize(120, 100))
         self.clear.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.clear.setObjectName("clear")
         self.horizontalLayout_11.addWidget(self.clear, 0, QtCore.Qt.AlignVCenter)
