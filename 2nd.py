@@ -1,4 +1,3 @@
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox,QLabel
 from PyQt5.uic import loadUiType
@@ -369,6 +368,12 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.a3=0
         self.b3=0
         self.c3=1
+        self.sc_x1=0
+        self.sc_x2=0
+        self.sc_x3=0
+        self.sc_y1=0
+        self.sc_y2=0
+        self.sc_y3=0
 
         self.retranslateUi(mainwindow)
         self.tabWidget.setCurrentIndex(2)
@@ -507,7 +512,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
          fig=plot.figure()
          if self.ch1==1:
              plot.subplot(2, 3, 1)
-             plot.plot(self.x1,self.y1)
+             plot.plot(self.x1,self.y1,color="red", linewidth=2,scalex=True)
              plot.subplot(2, 3, 4)
              Pxx, freqs, bins, im = plot.specgram(self.y1_array)
          if self.ch2==1:
@@ -520,7 +525,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
              plot.plot(self.x3,self.y3)
              plot.subplot(2, 3, 6)
              Pxx, freqs, bins, im = plot.specgram(self.y3_array)
-
+             
          plot.show()
          fig.savefig("x.pdf")
 
@@ -604,13 +609,43 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.zoomout1.clicked.connect(lambda :self.zo_1())
         self.zoomout2.clicked.connect(lambda :self.zo_2())
         self.zoomout3.clicked.connect(lambda :self.zo_3())
-
-
-        #aaahoooooooooooooooooooooo       ******************
-        # self.savepdf.triggered.connect(lambda:self.savepdf())
-        #************************************ysksh tshofooooo
-
-
+        
+        #####################shortcuts
+        self.zoomout1.setShortcut(_translate("MainWindow", "Ctrl+x"))
+        self.zoomout2.setShortcut(_translate("MainWindow", "Ctrl+y"))
+        self.zoomout3.setShortcut(_translate("MainWindow", "Ctrl+z"))
+        self.zoomin1.setShortcut(_translate("MainWindow", "Ctrl+a"))
+        self.zoomin2.setShortcut(_translate("MainWindow", "Ctrl+b"))
+        self.zoomin3.setShortcut(_translate("MainWindow", "Ctrl+c"))
+        self.resume1.setShortcut(_translate("MainWindow", "Ctrl+1"))
+        self.resume2.setShortcut(_translate("MainWindow", "Ctrl+2"))
+        self.resume3.setShortcut(_translate("MainWindow", "Ctrl+3"))
+        self.pause1.setShortcut(_translate("MainWindow", "Ctrl+4"))
+        self.pause1.setShortcut(_translate("MainWindow", "Ctrl+5"))
+        self.pause3.setShortcut(_translate("MainWindow", "Ctrl+6"))
+        self.savePDF.setShortcut(_translate("MainWindow", "Ctrl+s"))
+        
+        
+        #aaahoooooooooooooooooooooo save pdf ******************
+        
+        self.savePDF.triggered.connect(lambda:self.savepdf())
+       
+        
+       
+        #***********************scrolling button**************
+        self.right1.clicked.connect(lambda :self.scrollR(1))
+        self.right2.clicked.connect(lambda :self.scrollR(2))
+        self.right3.clicked.connect(lambda :self.scrollR(3))
+        self.left1.clicked.connect(lambda :self.scrollL(1))
+        self.left2.clicked.connect(lambda :self.scrollL(2))
+        self.left3.clicked.connect(lambda :self.scrollL(3))
+        self.up1.clicked.connect(lambda :self.scrollU(1))
+        self.up2.clicked.connect(lambda :self.scrollU(2))
+        self.up3.clicked.connect(lambda :self.scrollU(3))
+        self.down1.clicked.connect(lambda :self.scrollD(1))
+        self.down2.clicked.connect(lambda :self.scrollD(2))
+        self.down3.clicked.connect(lambda :self.scrollD(3))
+        #clear event
         self.clear.clicked.connect(lambda:self.delete())
 
             ############## Hilal Events #############
@@ -714,6 +749,67 @@ class Ui_mainwindow(QtGui.QMainWindow):
             self.spectView_3.setPixmap(plot3)
 
         shutil.rmtree(dirpath)
+
+###########################scrolling on x axis ##############################
+    def scrollR(self,ch):
+        if ch==1:
+            self.sc_x1 +=0.1
+            self.graphicsView.setXRange(self.sc_x1,self.sc_x1 +1)
+             
+        if ch==2:
+             self.sc_x2 +=0.1
+             self.graphicsView_2.setXRange(self.sc_x2,self.sc_x2 +1)
+             
+        if ch==3:
+              self.sc_x3 +=0.1
+              self.graphicsView_3.setXRange(self.sc_x3,self.sc_x3 +1)
+
+
+    def scrollL(self,ch):
+        if ch==1:
+            self.sc_x1 -=0.1
+            self.graphicsView.setXRange(self.sc_x1,self.sc_x1 +1)
+             
+        if ch==2:
+             self.sc_x2 -=0.1
+             self.graphicsView_2.setXRange(self.sc_x2,self.sc_x2 +1)
+             
+        if ch==3:
+             self.sc_x3 -=0.1
+             self.graphicsView_3.setXRange(self.sc_x3,self.sc_x3 +1)
+
+##########################scrollling on y axis######################
+    
+    def scrollU(self,ch):
+        if ch==1:
+            self.sc_y1 +=0.1
+            self.graphicsView.setYRange(self.sc_y1,self.sc_y1 +1)
+             
+        if ch==2:
+             self.sc_y2 +=0.1
+             self.graphicsView_2.setYRange(self.sc_y2,self.sc_y2 +1)
+             
+        if ch==3:
+              self.sc_y3 +=0.1
+              self.graphicsView_3.setYRange(self.sc_y3,self.sc_y3 +1)
+
+
+    def scrollD(self,ch):
+        if ch==1:
+            self.sc_y1 -=0.1
+            self.graphicsView.setYRange(self.sc_y1,self.sc_y1 +1)
+             
+        if ch==2:
+             self.sc_y2 -=0.1
+             self.graphicsView_2.setYRange(self.sc_y2,self.sc_y2 +1)
+             
+        if ch==3:
+             self.sc_y3 -=0.1
+             self.graphicsView_3.setYRange(self.sc_y3,self.sc_y3 +1)
+
+
+
+
 
 
 ############################## end hilal #####################################
