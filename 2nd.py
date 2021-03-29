@@ -755,12 +755,20 @@ class Ui_mainwindow(QtGui.QMainWindow):
             self.resume1.show()
             self.zoomin1.show()
             self.zoomout1.show()
+            self.up1.show()
+            self.down1.show()
+            self.left1.show()
+            self.right1.show()
         else:
             graphicsView.hide()
             self.pause1.hide()
             self.resume1.hide()
             self.zoomin1.hide()
             self.zoomout1.hide()
+            self.up1.hide()
+            self.down1.hide()
+            self.left1.hide()
+            self.right1.hide()
 
     def hide2 (self,channel,graphicsView):
         if (channel.isChecked()):
@@ -769,12 +777,21 @@ class Ui_mainwindow(QtGui.QMainWindow):
             self.resume2.show()
             self.zoomin2.show()
             self.zoomout2.show()
+            self.up2.show()
+            self.down2.show()
+            self.left2.show()
+            self.right2.show()
+            
         else:
             graphicsView.hide()
             self.pause2.hide()
             self.resume2.hide()
             self.zoomin2.hide()
             self.zoomout2.hide()
+            self.up2.hide()
+            self.down2.hide()
+            self.left2.hide()
+            self.right2.hide()
 
     def hide3 (self,channel,graphicsView):
         if (channel.isChecked()):
@@ -783,12 +800,20 @@ class Ui_mainwindow(QtGui.QMainWindow):
             self.resume3.show()
             self.zoomin3.show()
             self.zoomout3.show()
+            self.up3.show()
+            self.down3.show()
+            self.left3.show()
+            self.right3.show()
         else:
             graphicsView.hide()
             self.pause3.hide()
             self.resume3.hide()
             self.zoomin3.hide()
             self.zoomout3.hide()
+            self.up3.hide()
+            self.down3.hide()
+            self.left3.hide()
+            self.right3.hide()
 
     def hide (self,channel,graphicsView):
         if (channel.isChecked()):
