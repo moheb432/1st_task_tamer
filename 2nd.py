@@ -17,24 +17,24 @@ from PyQt5.QtGui import QIcon, QPixmap
 import tempfile
 import shutil
 
+from spectWindow1 import Ui_spectWindow1
+from spectWindow2 import Ui_spectWindow2
+from spectWindow3 import Ui_spectWindow3
+
 
 class Ui_mainwindow(QtGui.QMainWindow):
     def setupUi(self, mainwindow):
         mainwindow.setObjectName("mainwindow")
         mainwindow.setEnabled(True)
-        mainwindow.resize(1919, 837)
+        mainwindow.resize(1400, 860)
         mainwindow.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
         self.centralwidget = QtWidgets.QWidget(mainwindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.gridLayout_4 = QtWidgets.QGridLayout(self.centralwidget)
-        self.gridLayout_4.setObjectName("gridLayout_4")
-        self.verticalLayout_8 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_8.setContentsMargins(20, 20, 20, 0)
-        self.verticalLayout_8.setSpacing(15)
-        self.verticalLayout_8.setObjectName("verticalLayout_8")
-        self.verticalLayout_7 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_7.setSpacing(15)
-        self.verticalLayout_7.setObjectName("verticalLayout_7")
+        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName("gridLayout")
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_10.setSpacing(20)
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
         self.horizontalLayout_12 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_12.setObjectName("horizontalLayout_12")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
@@ -53,6 +53,8 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.graphicsView.setObjectName("graphicsView")
         self.horizontalLayout_4.addWidget(self.graphicsView)
         self.horizontalLayout_12.addLayout(self.horizontalLayout_4)
+        self.verticalLayout_7 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_7.setObjectName("verticalLayout_7")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout()
         self.verticalLayout_4.setSpacing(10)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
@@ -124,8 +126,19 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.pause1.setObjectName("pause1")
         self.horizontalLayout.addWidget(self.pause1)
         self.verticalLayout_4.addLayout(self.horizontalLayout)
-        self.horizontalLayout_12.addLayout(self.verticalLayout_4)
-        self.verticalLayout_7.addLayout(self.horizontalLayout_12)
+        self.verticalLayout_7.addLayout(self.verticalLayout_4)
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_10.setContentsMargins(-1, 8, -1, -1)
+        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+        self.spectro1 = QtWidgets.QPushButton(self.centralwidget)
+        self.spectro1.setObjectName("spectro1")
+        self.horizontalLayout_10.addWidget(self.spectro1)
+        self.clear1 = QtWidgets.QPushButton(self.centralwidget)
+        self.clear1.setObjectName("clear1")
+        self.horizontalLayout_10.addWidget(self.clear1)
+        self.verticalLayout_7.addLayout(self.horizontalLayout_10)
+        self.horizontalLayout_12.addLayout(self.verticalLayout_7)
+        self.verticalLayout_10.addLayout(self.horizontalLayout_12)
         self.horizontalLayout_13 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_13.setObjectName("horizontalLayout_13")
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
@@ -141,6 +154,8 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.graphicsView_2.setObjectName("graphicsView_2")
         self.horizontalLayout_5.addWidget(self.graphicsView_2)
         self.horizontalLayout_13.addLayout(self.horizontalLayout_5)
+        self.verticalLayout_8 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_8.setObjectName("verticalLayout_8")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout()
         self.verticalLayout_5.setSpacing(10)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
@@ -212,8 +227,19 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.pause2.setObjectName("pause2")
         self.horizontalLayout_2.addWidget(self.pause2)
         self.verticalLayout_5.addLayout(self.horizontalLayout_2)
-        self.horizontalLayout_13.addLayout(self.verticalLayout_5)
-        self.verticalLayout_7.addLayout(self.horizontalLayout_13)
+        self.verticalLayout_8.addLayout(self.verticalLayout_5)
+        self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_11.setContentsMargins(-1, 8, -1, -1)
+        self.horizontalLayout_11.setObjectName("horizontalLayout_11")
+        self.spectro2 = QtWidgets.QPushButton(self.centralwidget)
+        self.spectro2.setObjectName("spectro2")
+        self.horizontalLayout_11.addWidget(self.spectro2)
+        self.clear2 = QtWidgets.QPushButton(self.centralwidget)
+        self.clear2.setObjectName("clear2")
+        self.horizontalLayout_11.addWidget(self.clear2)
+        self.verticalLayout_8.addLayout(self.horizontalLayout_11)
+        self.horizontalLayout_13.addLayout(self.verticalLayout_8)
+        self.verticalLayout_10.addLayout(self.horizontalLayout_13)
         self.horizontalLayout_14 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_14.setObjectName("horizontalLayout_14")
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
@@ -229,6 +255,8 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.graphicsView_3.setObjectName("graphicsView_3")
         self.horizontalLayout_6.addWidget(self.graphicsView_3)
         self.horizontalLayout_14.addLayout(self.horizontalLayout_6)
+        self.verticalLayout_9 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_9.setObjectName("verticalLayout_9")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout()
         self.verticalLayout_6.setSpacing(10)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
@@ -300,82 +328,27 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.pause3.setObjectName("pause3")
         self.horizontalLayout_3.addWidget(self.pause3)
         self.verticalLayout_6.addLayout(self.horizontalLayout_3)
-        self.horizontalLayout_14.addLayout(self.verticalLayout_6)
-        self.verticalLayout_7.addLayout(self.horizontalLayout_14)
-        self.verticalLayout_8.addLayout(self.verticalLayout_7)
-        self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_11.setContentsMargins(-1, -1, 25, 0)
-        self.horizontalLayout_11.setSpacing(48)
-        self.horizontalLayout_11.setObjectName("horizontalLayout_11")
-        self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
-        self.show_spect = QtWidgets.QCheckBox(self.centralwidget)
-        self.show_spect.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.show_spect.setChecked(True)
-        self.show_spect.setObjectName("show_spect")
-        self.horizontalLayout_10.addWidget(self.show_spect)
-        self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget.setAutoFillBackground(False)
-        self.tabWidget.setStyleSheet("QTabWidget::pane {\n"
-"    border: 0 solid white;\n"
-"    margin: -13px -9px -13px -9px;\n"
-"}")
-        self.tabWidget.setTabPosition(QtWidgets.QTabWidget.South)
-        self.tabWidget.setTabShape(QtWidgets.QTabWidget.Triangular)
-        self.tabWidget.setObjectName("tabWidget")
-        self.spectrogram_1 = QtWidgets.QWidget()
-        self.spectrogram_1.setObjectName("spectrogram_1")
-        self.gridLayout_2 = QtWidgets.QGridLayout(self.spectrogram_1)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        self.spectView_1 = QtWidgets.QLabel(self.spectrogram_1)
-        self.spectView_1.setAutoFillBackground(False)
-        self.spectView_1.setText("")
-        self.spectView_1.setScaledContents(False)
-        self.spectView_1.setWordWrap(False)
-        self.spectView_1.setIndent(-1)
-        self.spectView_1.setObjectName("spectView_1")
-        self.gridLayout_2.addWidget(self.spectView_1, 0, 0, 1, 1)
-        self.tabWidget.addTab(self.spectrogram_1, "")
-        self.spectrogram_2 = QtWidgets.QWidget()
-        self.spectrogram_2.setObjectName("spectrogram_2")
-        self.gridLayout = QtWidgets.QGridLayout(self.spectrogram_2)
-        self.gridLayout.setObjectName("gridLayout")
-        self.spectView_2 = QtWidgets.QLabel(self.spectrogram_2)
-        self.spectView_2.setStyleSheet("QTabWidget::pane {\n"
-"    border: 0 solid white;\n"
-"    margin: -13px -9px -13px -9px;\n"
-"}")
-        self.spectView_2.setText("")
-        self.spectView_2.setScaledContents(False)
-        self.spectView_2.setObjectName("spectView_2")
-        self.gridLayout.addWidget(self.spectView_2, 0, 0, 1, 1)
-        self.tabWidget.addTab(self.spectrogram_2, "")
-        self.spectrogram_3 = QtWidgets.QWidget()
-        self.spectrogram_3.setObjectName("spectrogram_3")
-        self.gridLayout_3 = QtWidgets.QGridLayout(self.spectrogram_3)
-        self.gridLayout_3.setObjectName("gridLayout_3")
-        self.spectView_3 = QtWidgets.QLabel(self.spectrogram_3)
-        self.spectView_3.setText("")
-        self.spectView_3.setObjectName("spectView_3")
-        self.gridLayout_3.addWidget(self.spectView_3, 0, 0, 1, 1)
-        self.tabWidget.addTab(self.spectrogram_3, "")
-        self.horizontalLayout_10.addWidget(self.tabWidget)
-        self.horizontalLayout_11.addLayout(self.horizontalLayout_10)
-        self.clear = QtWidgets.QPushButton(self.centralwidget)
-        self.clear.setMinimumSize(QtCore.QSize(120, 100))
-        self.clear.setMaximumSize(QtCore.QSize(120, 100))
-        self.clear.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.clear.setObjectName("clear")
-        self.horizontalLayout_11.addWidget(self.clear, 0, QtCore.Qt.AlignVCenter)
-        self.verticalLayout_8.addLayout(self.horizontalLayout_11)
-        self.gridLayout_4.addLayout(self.verticalLayout_8, 0, 0, 1, 1)
+        self.verticalLayout_9.addLayout(self.verticalLayout_6)
+        self.horizontalLayout_15 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_15.setContentsMargins(-1, 8, -1, -1)
+        self.horizontalLayout_15.setObjectName("horizontalLayout_15")
+        self.spectro3 = QtWidgets.QPushButton(self.centralwidget)
+        self.spectro3.setObjectName("spectro3")
+        self.horizontalLayout_15.addWidget(self.spectro3)
+        self.clear3 = QtWidgets.QPushButton(self.centralwidget)
+        self.clear3.setObjectName("clear3")
+        self.horizontalLayout_15.addWidget(self.clear3)
+        self.verticalLayout_9.addLayout(self.horizontalLayout_15)
+        self.horizontalLayout_14.addLayout(self.verticalLayout_9)
+        self.verticalLayout_10.addLayout(self.horizontalLayout_14)
+        self.gridLayout.addLayout(self.verticalLayout_10, 0, 0, 1, 1)
         mainwindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(mainwindow)
         self.statusbar.setBaseSize(QtCore.QSize(4, 8))
         self.statusbar.setObjectName("statusbar")
         mainwindow.setStatusBar(self.statusbar)
         self.menubar = QtWidgets.QMenuBar(mainwindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1919, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1400, 26))
         self.menubar.setAutoFillBackground(False)
         self.menubar.setDefaultUp(False)
         self.menubar.setNativeMenuBar(True)
@@ -389,8 +362,6 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.ch2.setObjectName("ch2")
         self.ch3 = QtWidgets.QMenu(self.menubar)
         self.ch3.setObjectName("ch3")
-        self.spect = QtWidgets.QMenu(self.menubar)
-        self.spect.setObjectName("spect")
         self.help = QtWidgets.QMenu(self.menubar)
         self.help.setObjectName("help")
         mainwindow.setMenuBar(self.menubar)
@@ -420,7 +391,6 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.menubar.addAction(self.ch1.menuAction())
         self.menubar.addAction(self.ch2.menuAction())
         self.menubar.addAction(self.ch3.menuAction())
-        self.menubar.addAction(self.spect.menuAction())
         self.menubar.addAction(self.help.menuAction())
 
         
@@ -442,8 +412,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.sc_y3=0
 
         self.retranslateUi(mainwindow)
-        self.tabWidget.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(mainwindow)
+
 
         #timer for qt
         self.timer1 = QtCore.QTimer()
@@ -597,36 +566,38 @@ class Ui_mainwindow(QtGui.QMainWindow):
 
 #to clear data
 
-    def delete(self):
-        self.graphicsView.clear()
-        self.graphicsView_2.clear()
-        self.graphicsView_3.clear()
-        self.timer1.stop()
-        self.timer2.stop()
-        self.timer3.stop()
-        self.spectView_1.clear()
-        self.spectView_2.clear()
-        self.spectView_3.clear()
+    def delete(self,c):
+        if 1==c:
+            self.graphicsView.clear()
+            self.timer1.stop()
+        
+        elif 2==c:
+            self.graphicsView_2.clear()
+            self.timer2.stop()
+
+        elif 3==c:
+            self.graphicsView_3.clear()
+            self.timer3.stop()
 
 
-    def retranslateUi(self, mainwindow): 
+    def retranslateUi(self, mainwindow):
         THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
         _translate = QtCore.QCoreApplication.translate
         mainwindow.showMaximized()
         mainwindow.setWindowTitle(_translate("mainwindow", "MainWindow"))
         self.show_ch1.setText(_translate("mainwindow", "Channel 1"))
+        self.spectro1.setText(_translate("mainwindow", "Spectrogram"))
+        self.clear1.setText(_translate("mainwindow", "clear"))
         self.show_ch2.setText(_translate("mainwindow", "Channel 2"))
+        self.spectro2.setText(_translate("mainwindow", "Spectrogram"))
+        self.clear2.setText(_translate("mainwindow", "clear"))
         self.show_ch3.setText(_translate("mainwindow", "Channel 3"))
-        self.show_spect.setText(_translate("mainwindow", "Spectrogram"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.spectrogram_1), _translate("mainwindow", "Channel 1"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.spectrogram_2), _translate("mainwindow", "Channel 2"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.spectrogram_3), _translate("mainwindow", "Channel 3"))
-        self.clear.setText(_translate("mainwindow", "Clear all"))
-        self.menusignal_processing.setTitle(_translate("mainwindow", "file"))
+        self.spectro3.setText(_translate("mainwindow", "Spectrogram"))
+        self.clear3.setText(_translate("mainwindow", "clear"))
+        self.menusignal_processing.setTitle(_translate("mainwindow", "File"))
         self.ch1.setTitle(_translate("mainwindow", "Channel 1"))
         self.ch2.setTitle(_translate("mainwindow", "Channel 2"))
         self.ch3.setTitle(_translate("mainwindow", "Channel 3"))
-        self.spect.setTitle(_translate("mainwindow", "Spectrogram"))
         self.help.setTitle(_translate("mainwindow", "Help"))
         self.actionhelp.setText(_translate("mainwindow", "help"))
         self.close.setText(_translate("mainwindow", "Close "))
@@ -636,9 +607,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.open_ch3.setText(_translate("mainwindow", "load signal"))
         self.about.setText(_translate("mainwindow", "About"))
         self.savePDF.setText(_translate("mainwindow", "Save PDF"))
-        self.spectView_1.setMaximumHeight(320)
-        self.spectView_1.setMinimumWidth(800)
-        self.spectView_1.setScaledContents(True)
+  
 
 
         ############################# Icons #######################################
@@ -725,7 +694,11 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.down2.clicked.connect(lambda :self.scrollD(2))
         self.down3.clicked.connect(lambda :self.scrollD(3))
         #clear event
-        self.clear.clicked.connect(lambda:self.delete())
+        self.clear1.clicked.connect(lambda:self.delete(1))
+        self.clear1.clicked.connect(lambda:self.delete(2))
+        self.clear1.clicked.connect(lambda:self.delete(3))
+
+
 
             ############## Hilal Events #############
         self.close.triggered.connect(sys.exit)
@@ -737,17 +710,13 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.show_ch1.stateChanged.connect(lambda: self.hide1(self.show_ch1,self.graphicsView))
         self.show_ch2.stateChanged.connect(lambda: self.hide2(self.show_ch2,self.graphicsView_2))
         self.show_ch3.stateChanged.connect(lambda: self.hide3(self.show_ch3,self.graphicsView_3))
-        self.show_spect.stateChanged.connect(lambda: self.hide(self.show_spect,self.tabWidget))
+        #self.show_spect.stateChanged.connect(lambda: self.hide(self.show_spect,self.tabWidget))
 
+        self.spectro1.clicked.connect(lambda: self.showwindow(1))
+        self.spectro2.clicked.connect(lambda: self.showwindow(2))
+        self.spectro3.clicked.connect(lambda: self.showwindow(3))
 
         ############## Hilal Functions ################
-
-    def handleUI(self):
-        self.setWindowTitle("Signal Viewer")
-
-
-    def handleButtons(self):
-        pass
         
      #About message
     def showDialog(self):
@@ -830,32 +799,52 @@ class Ui_mainwindow(QtGui.QMainWindow):
 
  #################### Spectrogram ###########################
 
-    def spectro (self,ch,d):   #ch for channel  and  d for Data
+    def showwindow(self,ch):
+        if 1 == ch:
+            self.window1.show()
+        elif 2 == ch:
+            self.window2.show()
+        elif 3 == ch:
+            self.window3.show()
 
+
+    def spectro (self,ch,d):   #ch for channel  and  d for Data
         THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
         dirpath = tempfile.mkdtemp()
         y1 =d[: , 1]
         plot.specgram(y1)
 
+
         if ch ==1:
             plot.savefig(os.path.join(dirpath,"plot1.png"))
             plot1 = QPixmap(os.path.join(dirpath,"plot1.png"))
-            self.spectView_1.setPixmap(plot1)
-            self.tabWidget.setCurrentIndex(0)
+            self.window1=QtWidgets.QWidget()
+            self.ui=Ui_spectWindow1()
+            self.ui.setupUi(self.window1)
+            self.ui.spectView1.setPixmap(plot1)
+            QApplication.processEvents()
+
 
 
         elif ch ==2:
             plot.savefig(os.path.join(dirpath,"plot2.png"))
             plot2= QPixmap(os.path.join(dirpath,"plot2.png"))
-            self.spectView_2.setPixmap(plot2)
-            self.tabWidget.setCurrentIndex(1)
+            self.window2=QtWidgets.QWidget()
+            self.ui=Ui_spectWindow2()
+            self.ui.setupUi(self.window2)
+            self.ui.spectView2.setPixmap(plot2)
+            QApplication.processEvents()
+
 
 
         elif ch ==3:
             plot.savefig(os.path.join(dirpath,"plot3.png"))
             plot3 = QPixmap(os.path.join(dirpath,"plot3.png"))
-            self.spectView_3.setPixmap(plot3)
-            self.tabWidget.setCurrentIndex(2)
+            self.window3=QtWidgets.QWidget()
+            self.ui=Ui_spectWindow3()
+            self.ui.setupUi(self.window3)
+            self.ui.spectView3.setPixmap(plot3)
+            QApplication.processEvents()
 
 
         shutil.rmtree(dirpath)
