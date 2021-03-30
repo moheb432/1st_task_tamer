@@ -636,6 +636,10 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.open_ch3.setText(_translate("mainwindow", "load signal"))
         self.about.setText(_translate("mainwindow", "About"))
         self.savePDF.setText(_translate("mainwindow", "Save PDF"))
+        self.spectView_1.setMaximumHeight(320)
+        self.spectView_1.setMinimumWidth(800)
+        self.spectView_1.setScaledContents(True)
+
 
         ############################# Icons #######################################
 
