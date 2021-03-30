@@ -23,11 +23,468 @@ from spectWindow3 import Ui_spectWindow3
 
 
 class Ui_mainwindow(QtGui.QMainWindow):
+    
     def setupUi(self, mainwindow):
         mainwindow.setObjectName("mainwindow")
         mainwindow.setEnabled(True)
-        mainwindow.resize(1400, 860)
+        mainwindow.resize(1347, 897)
+        font = QtGui.QFont()
+        font.setPointSize(6)
+        mainwindow.setFont(font)
         mainwindow.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
+        mainwindow.setStyleSheet("QMainWindow{\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QLabel\n"
+"{\n"
+"    background-color: transparent;\n"
+"    color: #fff;\n"
+"    border-color: #000000;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"/*-----QMenuBar-----*/\n"
+"QMenuBar\n"
+"{\n"
+"    background-color: #34373f;\n"
+"    color: #ffffff;\n"
+"    border-color: #000000;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QMenuBar::disabled\n"
+"{\n"
+"    background-color: #404040;\n"
+"    color: #656565;\n"
+"    border-color: #051a39;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QMenuBar::item\n"
+"{\n"
+"    background-color: transparent;\n"
+
+"\n"
+"}\n"
+"\n"
+"\n"
+"QMenuBar::item:selected\n"
+"{\n"
+"    background-color: #f0f5f3;\n"
+"    color: #34373f;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QMenuBar::item:pressed\n"
+"{\n"
+"    background-color: #dcdcdf;\n"
+"    border: 1px solid #000;\n"
+"    margin-bottom: -1px;\n"
+"    padding-bottom: 1px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"/*-----QMenu-----*/\n"
+"QMenu\n"
+"{\n"
+"    background-color: #dcdcdf;\n"
+"    border: 1px solid;\n"
+"    color: #000;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QMenu QWidget{\n"
+"    background-color: transparent;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QMenu::separator\n"
+"{\n"
+"    height: 1px;\n"
+"    background-color: #34373f;\n"
+"    color: #ffffff;\n"
+"    padding-left: 4px;\n"
+"    margin-left: 10px;\n"
+"    margin-right: 5px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QMenu::item\n"
+"{\n"
+"    min-width : 150px;\n"
+"    padding: 3px 20px 3px 20px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QMenu::item:selected\n"
+"{\n"
+"    background-color: #34373f;\n"
+"    color: #f0f5f3;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QMenu::item:disabled\n"
+"{\n"
+"    color: #262626;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"/*-----QToolBar-----*/\n"
+"QToolBar\n"
+"{\n"
+"    background-color: #cbcccf;\n"
+"    color: #ffffff;\n"
+"    border-color: #000000;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"/*-----QToolButton-----*/\n"
+"QToolButton\n"
+"{\n"
+"    background-color: #333333;\n"
+"    color: #333333;\n"
+"    border-color: #333333;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QToolButton::hover\n"
+"{\n"
+"    background-color: #f0f5f3;\n"
+"    color: #ffffff;\n"
+"    border: 1px solid #fff;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QToolButton::checked:hover\n"
+"{\n"
+"    background-color: #f0f5f3;\n"
+"    color: #ffffff;\n"
+"    border-color: #fff;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QToolButton::pressed\n"
+"{\n"
+"    background-color: #34373f;\n"
+"    color: #ffffff;\n"
+"    border: 0px solid #fff;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QToolButton::checked\n"
+"{\n"
+"    background-color: #f0f5f3;\n"
+"    color: #ffffff;\n"
+"    border-color: #f0f5f3;\n"
+"    show-decoration-selected: 0;\n"
+"    outline: 0;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"/*-----QToolTip-----*/\n"
+"QToolTip\n"
+"{\n"
+"    border: 1px solid black;\n"
+"    background-color: #34373f;\n"
+"    border-radius: 0px;\n"
+"    color: #cbcccf;\n"
+"}\n"
+"\n"
+"/*-----QTextEdit-----*/\n"
+"QTextEdit{\n"
+"    padding: 10px;\n"
+"    \n"
+"}\n"
+"\n"
+"\n"
+"/*-----QComboBox-----*/\n"
+"QComboBox\n"
+"{\n"
+"    background-color: #fefefe;\n"
+"    border: 1px solid #1e1e1e;\n"
+"    border-radius: 0px;\n"
+"    padding-left: 6px;\n"
+"    color: #000;\n"
+"    height: 20px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QComboBox:on\n"
+"{\n"
+"    background-color: #fefefe;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QComboBox QAbstractItemView\n"
+"{\n"
+"    background-color: #dcdcdf;\n"
+"    color: #000;\n"
+"    border: 1px solid black;\n"
+"    selection-background-color: #2b579a;\n"
+"    selection-color: #dcdcdf;\n"
+"    outline: 0;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QComboBox::drop-down\n"
+"{\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 15px;\n"
+"    border-left-width: 0px;\n"
+"    border-left-color: darkgray;\n"
+"    border-left-style: solid; \n"
+"    border-top-right-radius: 3px; \n"
+"    border-bottom-right-radius: 3px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QComboBox::down-arrow\n"
+"{\n"
+"    image: url(\"./ressources/down_arrow.png\");\n"
+"    width:8px;\n"
+"    height:8px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"/*-----QSpinBox-----*/\n"
+"QSpinBox\n"
+"{\n"
+"    background-color: #fefefe;\n"
+"    border-width: 1px;\n"
+"    border-color: #1e1e1e;\n"
+"    border-style: solid;\n"
+"    color: #000;\n"
+"    padding: 2px;\n"
+"    selection-background-color: #4e4e8f;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QSpinBox::up-button, \n"
+"QSpinBox::down-button\n"
+"{\n"
+"    background-color: #fefefe;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QSpinBox::up-button:hover, \n"
+"QSpinBox::down-button:hover\n"
+"{\n"
+"    background-color: #fefefe;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QSpinBox::up-button:pressed, \n"
+"QSpinBox::down-button:pressed\n"
+"{\n"
+"    background-color: #ebebeb;\n"
+"    border: 1px solid #ebebeb;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QSpinBox::down-arrow\n"
+"{\n"
+"    image: url(\"./ressources/down_arrow.png\");\n"
+"    width: 7px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QSpinBox::up-arrow\n"
+"{\n"
+"    image: url(\"./ressources/up_arrow.png\");\n"
+"    width: 7px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"/*-----QSlider-----*/\n"
+"QSlider \n"
+"{\n"
+"    background-color: transparent;\n"
+"    padding: 2px;\n"
+"\n"
+"}\n"
+"\n"
+"QSlider::groove:horizontal \n"
+"{\n"
+"    subcontrol-origin: content;\n"
+"    background-color: transparent;\n"
+"    height: 15px;\n"
+"\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal \n"
+"{\n"
+"    background-color: #cbcccf;\n"
+"    width: 15px;\n"
+"    border-radius: 6px;\n"
+"\n"
+"}\n"
+"\n"
+"QSlider::sub-page:horizontal \n"
+"{\n"
+"    background-color: #999;\n"
+"    margin: 5px;\n"
+"    border-radius: 5px;\n"
+"\n"
+"}\n"
+"\n"
+"QSlider::add-page:horizontal \n"
+"{\n"
+"    background-color: #666;\n"
+"    margin: 5px;\n"
+"    border-radius: 5px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"/*-----QScrollBar-----*/\n"
+"QScrollBar:horizontal \n"
+"{\n"
+"    background-color: #444851;\n"
+"    border: 1px solid darkgray;\n"
+"    height: 15px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QScrollBar::handle:horizontal \n"
+"{\n"
+"    border: 1px solid gray;\n"
+"    min-width: 100px;\n"
+"    background-color: #fffdff;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QScrollBar::add-line:horizontal, \n"
+"QScrollBar::sub-line:horizontal,\n"
+"QScrollBar::add-page:horizontal, \n"
+"QScrollBar::sub-page:horizontal \n"
+"{\n"
+"    width: 0px;\n"
+"    background-color: transparent;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QScrollBar:vertical \n"
+"{\n"
+"    background-color: #444851;\n"
+"    border: 1px solid darkgray;\n"
+"    width: 14px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QScrollBar::handle:vertical \n"
+"{\n"
+"    border: 1px solid gray;\n"
+"    min-height: 100px;\n"
+"    background-color: #fffdff;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QScrollBar::add-line:vertical, \n"
+"QScrollBar::sub-line:vertical,\n"
+"QScrollBar::add-page:vertical, \n"
+"QScrollBar::sub-page:vertical \n"
+"{\n"
+"    height: 0px;\n"
+"    background-color: transparent;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"/*-----QStatusBar-----*/\n"
+"QStatusBar\n"
+"{\n"
+"    background-color: #34373f;\n"
+"    color: #fff;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton{\n"
+"    color:#34373f;\n"
+"    border-width: 1px;\n"
+"    border-radius: 6px;\n"
+"    border-bottom-color: rgb(150,150,150);\n"
+"    border-right-color: rgb(165,165,165);\n"
+"    border-left-color: rgb(165,165,165);\n"
+"    border-top-color: rgb(180,180,180);\n"
+"    border-style: solid;\n"
+"    padding: 4px;\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"}\n"
+"QPushButton:hover{\n"
+"    color:rgb(68, 72, 81);\n"
+"    border-width: 1px;\n"
+"    border-radius:6px;\n"
+"    border-top-color:#34373f;\n"
+"    border-right-color:#34373f;\n"
+"    border-left-color:  #34373f;\n"
+"    border-bottom-color: #34373f;\n"
+"    border-style: solid;\n"
+"    padding: 2px;\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"}\n"
+"QPushButton:default{\n"
+"    color:rgb(17,17,17);\n"
+"    border-width: 1px;\n"
+"    border-radius:6px;\n"
+"    border-top-color: rgb(255,150,60);\n"
+"    border-right-color: rgb(68, 72, 81);\n"
+"    border-left-color:  rgb(68, 72, 81);\n"
+"    border-bottom-color: rgb(200,70,20);\n"
+"    border-style: solid;\n"
+"    padding: 2px;\n"
+"    background-color: rgb(68, 72, 81);\n"
+"}\n"
+"QPushButton:pressed{\n"
+"    color:rgb(17,17,17);\n"
+"    border-width: 1px;\n"
+"    border-radius: 6px;\n"
+"    border-width: 1px;\n"
+"    border-top-color: rgba(255,150,60,200);\n"
+"    border-right-color: rgb(68, 72, 81);\n"
+"    border-left-color: rgb(68, 72, 81);\n"
+"    border-bottom-color: rgba(200,70,20,200);\n"
+"    border-style: solid;\n"
+"    padding: 2px;\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"}\n"
+"")
         self.centralwidget = QtWidgets.QWidget(mainwindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -42,6 +499,10 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.show_ch1 = QtWidgets.QCheckBox(self.centralwidget)
         self.show_ch1.setEnabled(True)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.show_ch1.setFont(font)
         self.show_ch1.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.show_ch1.setCheckable(True)
         self.show_ch1.setChecked(True)
@@ -99,41 +560,55 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.verticalLayout.addWidget(self.down1, 0, QtCore.Qt.AlignHCenter)
         self.verticalLayout_4.addLayout(self.verticalLayout)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setContentsMargins(0, 5, -1, -1)
+        self.horizontalLayout.setContentsMargins(0, 7, -1, -1)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.zoomin1 = QtWidgets.QPushButton(self.centralwidget)
-        self.zoomin1.setMinimumSize(QtCore.QSize(40, 40))
-        self.zoomin1.setMaximumSize(QtCore.QSize(40, 40))
+        self.zoomin1.setMinimumSize(QtCore.QSize(35, 35))
+        self.zoomin1.setMaximumSize(QtCore.QSize(35, 35))
         self.zoomin1.setText("")
         self.zoomin1.setObjectName("zoomin1")
         self.horizontalLayout.addWidget(self.zoomin1)
         self.zoomout1 = QtWidgets.QPushButton(self.centralwidget)
-        self.zoomout1.setMinimumSize(QtCore.QSize(40, 40))
-        self.zoomout1.setMaximumSize(QtCore.QSize(40, 40))
+        self.zoomout1.setMinimumSize(QtCore.QSize(35, 35))
+        self.zoomout1.setMaximumSize(QtCore.QSize(35, 35))
         self.zoomout1.setText("")
         self.zoomout1.setObjectName("zoomout1")
         self.horizontalLayout.addWidget(self.zoomout1)
         self.resume1 = QtWidgets.QPushButton(self.centralwidget)
-        self.resume1.setMinimumSize(QtCore.QSize(40, 40))
-        self.resume1.setMaximumSize(QtCore.QSize(40, 40))
+        self.resume1.setMinimumSize(QtCore.QSize(35, 35))
+        self.resume1.setMaximumSize(QtCore.QSize(35, 35))
         self.resume1.setText("")
         self.resume1.setObjectName("resume1")
         self.horizontalLayout.addWidget(self.resume1)
         self.pause1 = QtWidgets.QPushButton(self.centralwidget)
-        self.pause1.setMinimumSize(QtCore.QSize(40, 40))
-        self.pause1.setMaximumSize(QtCore.QSize(40, 40))
+        self.pause1.setMinimumSize(QtCore.QSize(35, 35))
+        self.pause1.setMaximumSize(QtCore.QSize(35, 35))
         self.pause1.setText("")
         self.pause1.setObjectName("pause1")
         self.horizontalLayout.addWidget(self.pause1)
         self.verticalLayout_4.addLayout(self.horizontalLayout)
         self.verticalLayout_7.addLayout(self.verticalLayout_4)
         self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_10.setContentsMargins(-1, 8, -1, -1)
+        self.horizontalLayout_10.setContentsMargins(-1, 5, -1, -1)
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
         self.spectro1 = QtWidgets.QPushButton(self.centralwidget)
+        self.spectro1.setMinimumSize(QtCore.QSize(92, 34))
+        self.spectro1.setMaximumSize(QtCore.QSize(92, 34))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        font.setBold(True)
+        font.setWeight(75)
+        self.spectro1.setFont(font)
         self.spectro1.setObjectName("spectro1")
         self.horizontalLayout_10.addWidget(self.spectro1)
         self.clear1 = QtWidgets.QPushButton(self.centralwidget)
+        self.clear1.setMinimumSize(QtCore.QSize(92, 34))
+        self.clear1.setMaximumSize(QtCore.QSize(92, 34))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        font.setBold(True)
+        font.setWeight(75)
+        self.clear1.setFont(font)
         self.clear1.setObjectName("clear1")
         self.horizontalLayout_10.addWidget(self.clear1)
         self.verticalLayout_7.addLayout(self.horizontalLayout_10)
@@ -145,6 +620,10 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.horizontalLayout_5.setSpacing(24)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.show_ch2 = QtWidgets.QCheckBox(self.centralwidget)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.show_ch2.setFont(font)
         self.show_ch2.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.show_ch2.setChecked(True)
         self.show_ch2.setObjectName("show_ch2")
@@ -169,7 +648,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.up2.sizePolicy().hasHeightForWidth())
         self.up2.setSizePolicy(sizePolicy)
-        self.up2.setMinimumSize(QtCore.QSize(35, 35))
+        self.up2.setMinimumSize(QtCore.QSize(0, 35))
         self.up2.setMaximumSize(QtCore.QSize(35, 35))
         self.up2.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.up2.setText("")
@@ -180,61 +659,75 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.horizontalLayout_8.setContentsMargins(-1, -1, 0, -1)
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.left2 = QtWidgets.QPushButton(self.centralwidget)
-        self.left2.setMinimumSize(QtCore.QSize(35, 35))
+        self.left2.setMinimumSize(QtCore.QSize(0, 35))
         self.left2.setMaximumSize(QtCore.QSize(35, 35))
         self.left2.setText("")
         self.left2.setObjectName("left2")
         self.horizontalLayout_8.addWidget(self.left2)
         self.right2 = QtWidgets.QPushButton(self.centralwidget)
-        self.right2.setMinimumSize(QtCore.QSize(35, 35))
+        self.right2.setMinimumSize(QtCore.QSize(0, 35))
         self.right2.setMaximumSize(QtCore.QSize(35, 35))
         self.right2.setText("")
         self.right2.setObjectName("right2")
         self.horizontalLayout_8.addWidget(self.right2)
         self.verticalLayout_2.addLayout(self.horizontalLayout_8)
         self.down2 = QtWidgets.QPushButton(self.centralwidget)
-        self.down2.setMinimumSize(QtCore.QSize(35, 35))
+        self.down2.setMinimumSize(QtCore.QSize(0, 35))
         self.down2.setMaximumSize(QtCore.QSize(35, 35))
         self.down2.setText("")
         self.down2.setObjectName("down2")
         self.verticalLayout_2.addWidget(self.down2, 0, QtCore.Qt.AlignHCenter)
         self.verticalLayout_5.addLayout(self.verticalLayout_2)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setContentsMargins(0, 5, -1, -1)
+        self.horizontalLayout_2.setContentsMargins(0, 7, -1, -1)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.zoomin2 = QtWidgets.QPushButton(self.centralwidget)
-        self.zoomin2.setMinimumSize(QtCore.QSize(40, 40))
-        self.zoomin2.setMaximumSize(QtCore.QSize(40, 40))
+        self.zoomin2.setMinimumSize(QtCore.QSize(35, 35))
+        self.zoomin2.setMaximumSize(QtCore.QSize(35, 35))
         self.zoomin2.setText("")
         self.zoomin2.setObjectName("zoomin2")
         self.horizontalLayout_2.addWidget(self.zoomin2)
         self.zoomout2 = QtWidgets.QPushButton(self.centralwidget)
-        self.zoomout2.setMinimumSize(QtCore.QSize(40, 40))
-        self.zoomout2.setMaximumSize(QtCore.QSize(40, 40))
+        self.zoomout2.setMinimumSize(QtCore.QSize(35, 35))
+        self.zoomout2.setMaximumSize(QtCore.QSize(35, 35))
         self.zoomout2.setText("")
         self.zoomout2.setObjectName("zoomout2")
         self.horizontalLayout_2.addWidget(self.zoomout2)
         self.resume2 = QtWidgets.QPushButton(self.centralwidget)
-        self.resume2.setMinimumSize(QtCore.QSize(40, 40))
-        self.resume2.setMaximumSize(QtCore.QSize(40, 40))
+        self.resume2.setMinimumSize(QtCore.QSize(35, 35))
+        self.resume2.setMaximumSize(QtCore.QSize(35, 35))
         self.resume2.setText("")
         self.resume2.setObjectName("resume2")
         self.horizontalLayout_2.addWidget(self.resume2)
         self.pause2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pause2.setMinimumSize(QtCore.QSize(40, 40))
-        self.pause2.setMaximumSize(QtCore.QSize(40, 40))
+        self.pause2.setMinimumSize(QtCore.QSize(35, 35))
+        self.pause2.setMaximumSize(QtCore.QSize(35, 35))
         self.pause2.setText("")
         self.pause2.setObjectName("pause2")
         self.horizontalLayout_2.addWidget(self.pause2)
         self.verticalLayout_5.addLayout(self.horizontalLayout_2)
         self.verticalLayout_8.addLayout(self.verticalLayout_5)
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_11.setContentsMargins(-1, 8, -1, -1)
+        self.horizontalLayout_11.setContentsMargins(-1, 5, -1, -1)
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
         self.spectro2 = QtWidgets.QPushButton(self.centralwidget)
+        self.spectro2.setMinimumSize(QtCore.QSize(92, 34))
+        self.spectro2.setMaximumSize(QtCore.QSize(92, 34))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        font.setBold(True)
+        font.setWeight(75)
+        self.spectro2.setFont(font)
         self.spectro2.setObjectName("spectro2")
         self.horizontalLayout_11.addWidget(self.spectro2)
         self.clear2 = QtWidgets.QPushButton(self.centralwidget)
+        self.clear2.setMinimumSize(QtCore.QSize(92, 34))
+        self.clear2.setMaximumSize(QtCore.QSize(92, 34))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        font.setBold(True)
+        font.setWeight(75)
+        self.clear2.setFont(font)
         self.clear2.setObjectName("clear2")
         self.horizontalLayout_11.addWidget(self.clear2)
         self.verticalLayout_8.addLayout(self.horizontalLayout_11)
@@ -246,11 +739,15 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.horizontalLayout_6.setSpacing(24)
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
         self.show_ch3 = QtWidgets.QCheckBox(self.centralwidget)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.show_ch3.setFont(font)
         self.show_ch3.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.show_ch3.setChecked(True)
         self.show_ch3.setObjectName("show_ch3")
         self.horizontalLayout_6.addWidget(self.show_ch3)
-        self.graphicsView_3 = pg.PlotWidget(self.centralwidget)
+        self.graphicsView_3 =pg.PlotWidget(self.centralwidget)
         self.graphicsView_3.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.graphicsView_3.setObjectName("graphicsView_3")
         self.horizontalLayout_6.addWidget(self.graphicsView_3)
@@ -270,7 +767,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.up3.sizePolicy().hasHeightForWidth())
         self.up3.setSizePolicy(sizePolicy)
-        self.up3.setMinimumSize(QtCore.QSize(35, 35))
+        self.up3.setMinimumSize(QtCore.QSize(0, 35))
         self.up3.setMaximumSize(QtCore.QSize(35, 35))
         self.up3.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.up3.setText("")
@@ -281,61 +778,75 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.horizontalLayout_9.setContentsMargins(-1, -1, 0, -1)
         self.horizontalLayout_9.setObjectName("horizontalLayout_9")
         self.left3 = QtWidgets.QPushButton(self.centralwidget)
-        self.left3.setMinimumSize(QtCore.QSize(35, 35))
+        self.left3.setMinimumSize(QtCore.QSize(0, 35))
         self.left3.setMaximumSize(QtCore.QSize(35, 35))
         self.left3.setText("")
         self.left3.setObjectName("left3")
         self.horizontalLayout_9.addWidget(self.left3)
         self.right3 = QtWidgets.QPushButton(self.centralwidget)
-        self.right3.setMinimumSize(QtCore.QSize(35, 35))
+        self.right3.setMinimumSize(QtCore.QSize(0, 35))
         self.right3.setMaximumSize(QtCore.QSize(35, 35))
         self.right3.setText("")
         self.right3.setObjectName("right3")
         self.horizontalLayout_9.addWidget(self.right3)
         self.verticalLayout_3.addLayout(self.horizontalLayout_9)
         self.down3 = QtWidgets.QPushButton(self.centralwidget)
-        self.down3.setMinimumSize(QtCore.QSize(35, 35))
+        self.down3.setMinimumSize(QtCore.QSize(0, 35))
         self.down3.setMaximumSize(QtCore.QSize(35, 35))
         self.down3.setText("")
         self.down3.setObjectName("down3")
         self.verticalLayout_3.addWidget(self.down3, 0, QtCore.Qt.AlignHCenter)
         self.verticalLayout_6.addLayout(self.verticalLayout_3)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setContentsMargins(0, 5, -1, -1)
+        self.horizontalLayout_3.setContentsMargins(0, 7, -1, -1)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.zoomin3 = QtWidgets.QPushButton(self.centralwidget)
-        self.zoomin3.setMinimumSize(QtCore.QSize(40, 40))
-        self.zoomin3.setMaximumSize(QtCore.QSize(40, 40))
+        self.zoomin3.setMinimumSize(QtCore.QSize(35, 35))
+        self.zoomin3.setMaximumSize(QtCore.QSize(35, 35))
         self.zoomin3.setText("")
         self.zoomin3.setObjectName("zoomin3")
         self.horizontalLayout_3.addWidget(self.zoomin3)
         self.zoomout3 = QtWidgets.QPushButton(self.centralwidget)
-        self.zoomout3.setMinimumSize(QtCore.QSize(40, 40))
-        self.zoomout3.setMaximumSize(QtCore.QSize(40, 40))
+        self.zoomout3.setMinimumSize(QtCore.QSize(35, 35))
+        self.zoomout3.setMaximumSize(QtCore.QSize(35, 35))
         self.zoomout3.setText("")
         self.zoomout3.setObjectName("zoomout3")
         self.horizontalLayout_3.addWidget(self.zoomout3)
         self.resume3 = QtWidgets.QPushButton(self.centralwidget)
-        self.resume3.setMinimumSize(QtCore.QSize(40, 40))
-        self.resume3.setMaximumSize(QtCore.QSize(40, 40))
+        self.resume3.setMinimumSize(QtCore.QSize(35, 35))
+        self.resume3.setMaximumSize(QtCore.QSize(35, 35))
         self.resume3.setText("")
         self.resume3.setObjectName("resume3")
         self.horizontalLayout_3.addWidget(self.resume3)
         self.pause3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pause3.setMinimumSize(QtCore.QSize(40, 40))
-        self.pause3.setMaximumSize(QtCore.QSize(40, 40))
+        self.pause3.setMinimumSize(QtCore.QSize(35, 35))
+        self.pause3.setMaximumSize(QtCore.QSize(35, 35))
         self.pause3.setText("")
         self.pause3.setObjectName("pause3")
         self.horizontalLayout_3.addWidget(self.pause3)
         self.verticalLayout_6.addLayout(self.horizontalLayout_3)
         self.verticalLayout_9.addLayout(self.verticalLayout_6)
         self.horizontalLayout_15 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_15.setContentsMargins(-1, 8, -1, -1)
+        self.horizontalLayout_15.setContentsMargins(-1, 5, -1, -1)
         self.horizontalLayout_15.setObjectName("horizontalLayout_15")
         self.spectro3 = QtWidgets.QPushButton(self.centralwidget)
+        self.spectro3.setMinimumSize(QtCore.QSize(92, 34))
+        self.spectro3.setMaximumSize(QtCore.QSize(92, 34))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        font.setBold(True)
+        font.setWeight(75)
+        self.spectro3.setFont(font)
         self.spectro3.setObjectName("spectro3")
         self.horizontalLayout_15.addWidget(self.spectro3)
         self.clear3 = QtWidgets.QPushButton(self.centralwidget)
+        self.clear3.setMinimumSize(QtCore.QSize(92, 34))
+        self.clear3.setMaximumSize(QtCore.QSize(92, 34))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        font.setBold(True)
+        font.setWeight(75)
+        self.clear3.setFont(font)
         self.clear3.setObjectName("clear3")
         self.horizontalLayout_15.addWidget(self.clear3)
         self.verticalLayout_9.addLayout(self.horizontalLayout_15)
@@ -348,7 +859,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.statusbar.setObjectName("statusbar")
         mainwindow.setStatusBar(self.statusbar)
         self.menubar = QtWidgets.QMenuBar(mainwindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1400, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1347, 26))
         self.menubar.setAutoFillBackground(False)
         self.menubar.setDefaultUp(False)
         self.menubar.setNativeMenuBar(True)
@@ -392,7 +903,6 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.menubar.addAction(self.ch2.menuAction())
         self.menubar.addAction(self.ch3.menuAction())
         self.menubar.addAction(self.help.menuAction())
-
         
         self.a1=0
         self.b1=0
@@ -590,17 +1100,16 @@ class Ui_mainwindow(QtGui.QMainWindow):
     def retranslateUi(self, mainwindow):
         THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
         _translate = QtCore.QCoreApplication.translate
-        mainwindow.showMaximized()
         mainwindow.setWindowTitle(_translate("mainwindow", "MainWindow"))
         self.show_ch1.setText(_translate("mainwindow", "Channel 1"))
         self.spectro1.setText(_translate("mainwindow", "Spectrogram"))
-        self.clear1.setText(_translate("mainwindow", "clear"))
+        self.clear1.setText(_translate("mainwindow", "Clear"))
         self.show_ch2.setText(_translate("mainwindow", "Channel 2"))
         self.spectro2.setText(_translate("mainwindow", "Spectrogram"))
-        self.clear2.setText(_translate("mainwindow", "clear"))
+        self.clear2.setText(_translate("mainwindow", "Clear"))
         self.show_ch3.setText(_translate("mainwindow", "Channel 3"))
         self.spectro3.setText(_translate("mainwindow", "Spectrogram"))
-        self.clear3.setText(_translate("mainwindow", "clear"))
+        self.clear3.setText(_translate("mainwindow", "Clear"))
         self.menusignal_processing.setTitle(_translate("mainwindow", "File"))
         self.ch1.setTitle(_translate("mainwindow", "Channel 1"))
         self.ch2.setTitle(_translate("mainwindow", "Channel 2"))
@@ -609,9 +1118,9 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.actionhelp.setText(_translate("mainwindow", "help"))
         self.close.setText(_translate("mainwindow", "Close "))
         self.actionhelp_2.setText(_translate("mainwindow", "help "))
-        self.open_ch1.setText(_translate("mainwindow", "load signal"))
-        self.open_ch2.setText(_translate("mainwindow", "load signal"))
-        self.open_ch3.setText(_translate("mainwindow", "load signal"))
+        self.open_ch1.setText(_translate("mainwindow", "Load Signal"))
+        self.open_ch2.setText(_translate("mainwindow", "Load Signal"))
+        self.open_ch3.setText(_translate("mainwindow", "Load Signal"))
         self.about.setText(_translate("mainwindow", "About"))
         self.savePDF.setText(_translate("mainwindow", "Save PDF"))
   
@@ -651,12 +1160,12 @@ class Ui_mainwindow(QtGui.QMainWindow):
 
         #resume buttoms actions
         self.resume1.clicked.connect(lambda :self.timer1.start())
-        self.resume2.clicked.connect(lambda :self.timer2.start())
-        self.resume3.clicked.connect(lambda :self.timer3.start())
+        self.resume2.clicked.connect(lambda :self.timer3z.start())
+        self.resume3.clicked.connect(lambda :self.timer2.start())
 
         self.pause1.clicked.connect(lambda :self.timer1.stop())
-        self.pause2.clicked.connect(lambda :self.timer2.stop())
-        self.pause3.clicked.connect(lambda :self.timer3.stop())
+        self.pause2.clicked.connect(lambda :self.timer3.stop())
+        self.pause3.clicked.connect(lambda :self.timer2.stop())
 
         self.zoomin1.clicked.connect(lambda :self.zi_1())
         self.zoomin2.clicked.connect(lambda :self.zi_2())
@@ -741,6 +1250,8 @@ class Ui_mainwindow(QtGui.QMainWindow):
             self.down1.show()
             self.left1.show()
             self.right1.show()
+            self.clear1.show()
+            self.spectro1.show()
         else:
             graphicsView.hide()
             self.pause1.hide()
@@ -751,6 +1262,8 @@ class Ui_mainwindow(QtGui.QMainWindow):
             self.down1.hide()
             self.left1.hide()
             self.right1.hide()
+            self.clear1.hide()
+            self.spectro1.hide()
 
     def hide2 (self,channel,graphicsView):
         if (channel.isChecked()):
@@ -763,6 +1276,9 @@ class Ui_mainwindow(QtGui.QMainWindow):
             self.down2.show()
             self.left2.show()
             self.right2.show()
+            self.clear2.show()
+            self.spectro2.show()
+
             
         else:
             graphicsView.hide()
@@ -774,6 +1290,8 @@ class Ui_mainwindow(QtGui.QMainWindow):
             self.down2.hide()
             self.left2.hide()
             self.right2.hide()
+            self.clear2.hide()
+            self.spectro2.hide()
 
     def hide3 (self,channel,graphicsView):
         if (channel.isChecked()):
@@ -786,6 +1304,9 @@ class Ui_mainwindow(QtGui.QMainWindow):
             self.down3.show()
             self.left3.show()
             self.right3.show()
+            self.clear3.show()
+            self.spectro3.show()
+
         else:
             graphicsView.hide()
             self.pause3.hide()
@@ -796,6 +1317,8 @@ class Ui_mainwindow(QtGui.QMainWindow):
             self.down3.hide()
             self.left3.hide()
             self.right3.hide()
+            self.clear3.hide()
+            self.spectro3.hide()
 
     def hide (self,channel,graphicsView):
         if (channel.isChecked()):
