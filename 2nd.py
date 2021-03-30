@@ -567,17 +567,24 @@ class Ui_mainwindow(QtGui.QMainWindow):
 #to clear data
 
     def delete(self,c):
+
         if 1==c:
             self.graphicsView.clear()
             self.timer1.stop()
-        
+            self.ui1.spectView1.clear()
+
         elif 2==c:
             self.graphicsView_2.clear()
             self.timer2.stop()
+            self.ui2.spectView2.clear()
+
 
         elif 3==c:
             self.graphicsView_3.clear()
             self.timer3.stop()
+            self.ui3.spectView3.clear()
+
+
 
 
     def retranslateUi(self, mainwindow):
@@ -695,8 +702,8 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.down3.clicked.connect(lambda :self.scrollD(3))
         #clear event
         self.clear1.clicked.connect(lambda:self.delete(1))
-        self.clear1.clicked.connect(lambda:self.delete(2))
-        self.clear1.clicked.connect(lambda:self.delete(3))
+        self.clear2.clicked.connect(lambda:self.delete(2))
+        self.clear3.clicked.connect(lambda:self.delete(3))
 
 
 
@@ -819,9 +826,9 @@ class Ui_mainwindow(QtGui.QMainWindow):
             plot.savefig(os.path.join(dirpath,"plot1.png"))
             plot1 = QPixmap(os.path.join(dirpath,"plot1.png"))
             self.window1=QtWidgets.QWidget()
-            self.ui=Ui_spectWindow1()
-            self.ui.setupUi(self.window1)
-            self.ui.spectView1.setPixmap(plot1)
+            self.ui1=Ui_spectWindow1()
+            self.ui1.setupUi(self.window1)
+            self.ui1.spectView1.setPixmap(plot1)
             QApplication.processEvents()
 
 
@@ -830,9 +837,9 @@ class Ui_mainwindow(QtGui.QMainWindow):
             plot.savefig(os.path.join(dirpath,"plot2.png"))
             plot2= QPixmap(os.path.join(dirpath,"plot2.png"))
             self.window2=QtWidgets.QWidget()
-            self.ui=Ui_spectWindow2()
-            self.ui.setupUi(self.window2)
-            self.ui.spectView2.setPixmap(plot2)
+            self.ui2=Ui_spectWindow2()
+            self.ui2.setupUi(self.window2)
+            self.ui2.spectView2.setPixmap(plot2)
             QApplication.processEvents()
 
 
@@ -841,9 +848,9 @@ class Ui_mainwindow(QtGui.QMainWindow):
             plot.savefig(os.path.join(dirpath,"plot3.png"))
             plot3 = QPixmap(os.path.join(dirpath,"plot3.png"))
             self.window3=QtWidgets.QWidget()
-            self.ui=Ui_spectWindow3()
-            self.ui.setupUi(self.window3)
-            self.ui.spectView3.setPixmap(plot3)
+            self.ui3=Ui_spectWindow3()
+            self.ui3.setupUi(self.window3)
+            self.ui3.spectView3.setPixmap(plot3)
             QApplication.processEvents()
 
 
