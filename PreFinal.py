@@ -973,7 +973,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
     ################## About message ####################
 
     def showDialog(self):
-        QMessageBox.information(self,"About","Signal Viewer is a software for visualizing signals \n (c) 2021 SBME Cairo University")
+        QMessageBox.information(self,"About","Signal Viewer is a software for visualizing signals \n \n         (c) 2021 SBME Cairo University")
 
     ############### Hide Channels function ######################
 
