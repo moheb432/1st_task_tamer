@@ -26,7 +26,7 @@ class Ui_spectWindow1(object):
 
     def retranslateUi(self, spectWindow1):
         _translate = QtCore.QCoreApplication.translate
-        spectWindow1.setWindowTitle(_translate("spectWindow1", "Form"))
+        spectWindow1.setWindowTitle(_translate("spectWindow1", "Channel 1"))
 
 
 if __name__ == "__main__":
