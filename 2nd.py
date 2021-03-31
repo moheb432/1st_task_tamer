@@ -1100,7 +1100,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
     def retranslateUi(self, mainwindow):
         THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
         _translate = QtCore.QCoreApplication.translate
-        mainwindow.setWindowTitle(_translate("mainwindow", "MainWindow"))
+        mainwindow.setWindowTitle(_translate("mainwindow", "Signal Viewer"))
         self.show_ch1.setText(_translate("mainwindow", "Channel 1"))
         self.spectro1.setText(_translate("mainwindow", "Spectrogram"))
         self.clear1.setText(_translate("mainwindow", "Clear"))
@@ -1160,12 +1160,12 @@ class Ui_mainwindow(QtGui.QMainWindow):
 
         #resume buttoms actions
         self.resume1.clicked.connect(lambda :self.timer1.start())
-        self.resume2.clicked.connect(lambda :self.timer3z.start())
-        self.resume3.clicked.connect(lambda :self.timer2.start())
+        self.resume2.clicked.connect(lambda :self.timer2.start())
+        self.resume3.clicked.connect(lambda :self.timer3.start())
 
         self.pause1.clicked.connect(lambda :self.timer1.stop())
-        self.pause2.clicked.connect(lambda :self.timer3.stop())
-        self.pause3.clicked.connect(lambda :self.timer2.stop())
+        self.pause2.clicked.connect(lambda :self.timer2.stop())
+        self.pause3.clicked.connect(lambda :self.timer3.stop())
 
         self.zoomin1.clicked.connect(lambda :self.zi_1())
         self.zoomin2.clicked.connect(lambda :self.zi_2())
