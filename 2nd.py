@@ -1067,7 +1067,6 @@ class Ui_mainwindow(QtGui.QMainWindow):
             self.ui1=Ui_spectWindow1()
             self.ui1.setupUi(self.window1)
             self.ui1.spectView1.setPixmap(plot1)
-            QApplication.processEvents()
 
 
 
@@ -1078,7 +1077,6 @@ class Ui_mainwindow(QtGui.QMainWindow):
             self.ui2=Ui_spectWindow2()
             self.ui2.setupUi(self.window2)
             self.ui2.spectView2.setPixmap(plot2)
-            QApplication.processEvents()
 
 
 
@@ -1089,7 +1087,6 @@ class Ui_mainwindow(QtGui.QMainWindow):
             self.ui3=Ui_spectWindow3()
             self.ui3.setupUi(self.window3)
             self.ui3.spectView3.setPixmap(plot3)
-            QApplication.processEvents()
 
 
         shutil.rmtree(dirpath)
