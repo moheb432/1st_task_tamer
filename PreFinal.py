@@ -639,14 +639,164 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.retranslateUi(mainwindow)
 
 
-        #timer for qt
+    ################ Timer for qt ##################
         self.timer1 = QtCore.QTimer()
         self.timer2 = QtCore.QTimer()
         self.timer3 = QtCore.QTimer()
 
 
 
-#reading dataaa ************************
+    ############################### UI and Events #################################
+
+    def retranslateUi(self, mainwindow):
+        THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+        _translate = QtCore.QCoreApplication.translate
+        mainwindow.setWindowTitle(_translate("mainwindow", "Signal Viewer"))
+        self.show_ch1.setText(_translate("mainwindow", "Channel 1"))
+        self.spectro1.setText(_translate("mainwindow", "Spectrogram"))
+        self.clear1.setText(_translate("mainwindow", "Clear"))
+        self.show_ch2.setText(_translate("mainwindow", "Channel 2"))
+        self.spectro2.setText(_translate("mainwindow", "Spectrogram"))
+        self.clear2.setText(_translate("mainwindow", "Clear"))
+        self.show_ch3.setText(_translate("mainwindow", "Channel 3"))
+        self.spectro3.setText(_translate("mainwindow", "Spectrogram"))
+        self.clear3.setText(_translate("mainwindow", "Clear"))
+        self.menusignal_processing.setTitle(_translate("mainwindow", "File"))
+        self.ch1.setTitle(_translate("mainwindow", "Channel 1"))
+        self.ch2.setTitle(_translate("mainwindow", "Channel 2"))
+        self.ch3.setTitle(_translate("mainwindow", "Channel 3"))
+        self.help.setTitle(_translate("mainwindow", "Help"))
+        self.actionhelp.setText(_translate("mainwindow", "help"))
+        self.close.setText(_translate("mainwindow", "Close "))
+        self.actionhelp_2.setText(_translate("mainwindow", "help "))
+        self.open_ch1.setText(_translate("mainwindow", "Load Signal"))
+        self.open_ch2.setText(_translate("mainwindow", "Load Signal"))
+        self.open_ch3.setText(_translate("mainwindow", "Load Signal"))
+        self.about.setText(_translate("mainwindow", "About"))
+        self.savePDF.setText(_translate("mainwindow", "Save PDF"))
+
+        ######################## Icons ###############################
+
+        self.resume1.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/play.png")))
+        self.resume2.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/play.png")))
+        self.resume3.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/play.png")))
+        self.pause1.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/pause.png")))
+        self.pause2.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/pause.png")))
+        self.pause3.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/pause.png")))
+
+        self.zoomin1.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/in.png")))
+        self.zoomout1.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/out.png")))
+        self.zoomin2.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/in.png")))
+        self.zoomout2.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/out.png")))
+        self.zoomin3.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/in.png")))
+        self.zoomout3.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/out.png")))
+
+        self.up1.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/up.png")))
+        self.down1.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/down.png")))
+        self.left1.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/left.png")))
+        self.right1.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/right.png")))
+
+        self.up2.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/up.png")))
+        self.down2.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/down.png")))
+        self.left2.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/left.png")))
+        self.right2.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/right.png")))
+        
+        self.up3.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/up.png")))
+        self.down3.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/down.png")))
+        self.left3.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/left.png")))
+        self.right3.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/right.png")))
+
+
+        ############# Resume buttons Actions ##################
+
+        self.resume1.clicked.connect(lambda :self.timer1.start())
+        self.resume2.clicked.connect(lambda :self.timer2.start())
+        self.resume3.clicked.connect(lambda :self.timer3.start())
+
+        self.pause1.clicked.connect(lambda :self.timer1.stop())
+        self.pause2.clicked.connect(lambda :self.timer2.stop())
+        self.pause3.clicked.connect(lambda :self.timer3.stop())
+
+        self.zoomin1.clicked.connect(lambda :self.zi_1())
+        self.zoomin2.clicked.connect(lambda :self.zi_2())
+        self.zoomin3.clicked.connect(lambda :self.zi_3())
+        self.zoomout1.clicked.connect(lambda :self.zo_1())
+        self.zoomout2.clicked.connect(lambda :self.zo_2())
+        self.zoomout3.clicked.connect(lambda :self.zo_3())
+        
+        ##################### Shortcuts ##################
+
+        self.zoomout1.setShortcut(_translate("MainWindow", "Ctrl+x"))
+        self.zoomout2.setShortcut(_translate("MainWindow", "Ctrl+y"))
+        self.zoomout3.setShortcut(_translate("MainWindow", "Ctrl+z"))
+        self.zoomin1.setShortcut(_translate("MainWindow", "Ctrl+a"))
+        self.zoomin2.setShortcut(_translate("MainWindow", "Ctrl+b"))
+        self.zoomin3.setShortcut(_translate("MainWindow", "Ctrl+c"))
+        self.resume1.setShortcut(_translate("MainWindow", "Ctrl+1"))
+        self.resume2.setShortcut(_translate("MainWindow", "Ctrl+2"))
+        self.resume3.setShortcut(_translate("MainWindow", "Ctrl+3"))
+        self.pause1.setShortcut(_translate("MainWindow", "Ctrl+4"))
+        self.pause1.setShortcut(_translate("MainWindow", "Ctrl+5"))
+        self.pause3.setShortcut(_translate("MainWindow", "Ctrl+6"))
+        self.savePDF.setShortcut(_translate("MainWindow", "Ctrl+s"))
+        
+        
+        ##################### Save pdf ######################
+        
+        self.savePDF.triggered.connect(lambda:self.savepdf())
+       
+        
+       
+        ################### Scrolling buttons ###################
+
+        self.right1.clicked.connect(lambda :self.scrollR(1))
+        self.right2.clicked.connect(lambda :self.scrollR(2))
+        self.right3.clicked.connect(lambda :self.scrollR(3))
+        self.left1.clicked.connect(lambda :self.scrollL(1))
+        self.left2.clicked.connect(lambda :self.scrollL(2))
+        self.left3.clicked.connect(lambda :self.scrollL(3))
+        self.up1.clicked.connect(lambda :self.scrollU(1))
+        self.up2.clicked.connect(lambda :self.scrollU(2))
+        self.up3.clicked.connect(lambda :self.scrollU(3))
+        self.down1.clicked.connect(lambda :self.scrollD(1))
+        self.down2.clicked.connect(lambda :self.scrollD(2))
+        self.down3.clicked.connect(lambda :self.scrollD(3))
+
+        ################## Clear ######################
+
+        self.clear1.clicked.connect(lambda:self.delete(1))
+        self.clear2.clicked.connect(lambda:self.delete(2))
+        self.clear3.clicked.connect(lambda:self.delete(3))
+
+
+
+        ################# Loading Data ################
+
+        self.close.triggered.connect(sys.exit)
+        self.about.triggered.connect(self.showDialog)
+        self.open_ch1.triggered.connect(lambda: self.play1())
+        self.open_ch2.triggered.connect(lambda: self.play2())
+        self.open_ch3.triggered.connect(lambda: self.play3())
+
+        ################# Hide Channels ################
+
+        self.show_ch1.stateChanged.connect(lambda: self.hide1(self.show_ch1,self.graphicsView))
+        self.show_ch2.stateChanged.connect(lambda: self.hide2(self.show_ch2,self.graphicsView_2))
+        self.show_ch3.stateChanged.connect(lambda: self.hide3(self.show_ch3,self.graphicsView_3))
+
+        ################# Show Spectrogram ################
+
+        self.spectro1.clicked.connect(lambda: self.showwindow(1))
+        self.spectro2.clicked.connect(lambda: self.showwindow(2))
+        self.spectro3.clicked.connect(lambda: self.showwindow(3))
+
+
+
+    ############################### Functions ################################
+
+
+    ################# reading dataaa ###############
+
     def read_data(self,ch):
         loadSignal= QtGui.QFileDialog.getOpenFileName( self, 'Open only CSV ', os.getenv('HOME') ,"csv(*.csv)")
         path=loadSignal[0]
@@ -670,7 +820,10 @@ class Ui_mainwindow(QtGui.QMainWindow):
             self.y3= list(self.y3_array [:])
             self.ch3=1
             self.spectro(3,data)
-#function in qt timer to update the data
+
+
+    ########### Function in qt timer to update the data ###########
+
     def update1(self):
         if self.st_x1>len(self.x1):
             self.st_x1=10
@@ -692,7 +845,9 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.graphicsView_3.plot(x,y,pen=pg.mkPen('g', width=3))
         if self.st_x3>len(self.x3):
             self.st_x3=0
-#playing data on adding the file
+
+
+    ############## Playing data on adding the file ##########
 
     def play1(self):
         self.read_data(1)
@@ -723,7 +878,10 @@ class Ui_mainwindow(QtGui.QMainWindow):
         self.graphicsView_3.setXRange(0,1)
         self.timer3.timeout.connect(self.update3)
         self.timer3.start()
-#zooming
+
+
+    ############ Zooming #############
+
     def zi_1(self):
         if(self.b1 < 3):
             self.c1 -= 0.2
@@ -767,7 +925,10 @@ class Ui_mainwindow(QtGui.QMainWindow):
             self.c3 +=0.2
             self.b3-=1
         self.graphicsView_3.setXRange(0,self.c3)
-#saving data
+
+
+    ############# Saving data #############
+
     def savepdf(self) :
          fig=plot.figure()
          if self.ch1==1:
@@ -789,7 +950,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
          plot.show()
          fig.savefig("x.pdf")
 
-#to clear data
+    ############### Clear data ##############
 
     def delete(self,c):
 
@@ -808,152 +969,14 @@ class Ui_mainwindow(QtGui.QMainWindow):
             self.graphicsView_3.clear()
             self.timer3.stop()
             self.ui3.spectView3.clear()
-
-
-
-
-    def retranslateUi(self, mainwindow):
-        THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
-        _translate = QtCore.QCoreApplication.translate
-        mainwindow.setWindowTitle(_translate("mainwindow", "Signal Viewer"))
-        self.show_ch1.setText(_translate("mainwindow", "Channel 1"))
-        self.spectro1.setText(_translate("mainwindow", "Spectrogram"))
-        self.clear1.setText(_translate("mainwindow", "Clear"))
-        self.show_ch2.setText(_translate("mainwindow", "Channel 2"))
-        self.spectro2.setText(_translate("mainwindow", "Spectrogram"))
-        self.clear2.setText(_translate("mainwindow", "Clear"))
-        self.show_ch3.setText(_translate("mainwindow", "Channel 3"))
-        self.spectro3.setText(_translate("mainwindow", "Spectrogram"))
-        self.clear3.setText(_translate("mainwindow", "Clear"))
-        self.menusignal_processing.setTitle(_translate("mainwindow", "File"))
-        self.ch1.setTitle(_translate("mainwindow", "Channel 1"))
-        self.ch2.setTitle(_translate("mainwindow", "Channel 2"))
-        self.ch3.setTitle(_translate("mainwindow", "Channel 3"))
-        self.help.setTitle(_translate("mainwindow", "Help"))
-        self.actionhelp.setText(_translate("mainwindow", "help"))
-        self.close.setText(_translate("mainwindow", "Close "))
-        self.actionhelp_2.setText(_translate("mainwindow", "help "))
-        self.open_ch1.setText(_translate("mainwindow", "Load Signal"))
-        self.open_ch2.setText(_translate("mainwindow", "Load Signal"))
-        self.open_ch3.setText(_translate("mainwindow", "Load Signal"))
-        self.about.setText(_translate("mainwindow", "About"))
-        self.savePDF.setText(_translate("mainwindow", "Save PDF"))
-  
-
-
-        ############################# Icons #######################################
-
-        self.resume1.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/play.png")))
-        self.resume2.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/play.png")))
-        self.resume3.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/play.png")))
-        self.pause1.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/pause.png")))
-        self.pause2.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/pause.png")))
-        self.pause3.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/pause.png")))
-
-        self.zoomin1.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/in.png")))
-        self.zoomout1.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/out.png")))
-        self.zoomin2.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/in.png")))
-        self.zoomout2.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/out.png")))
-        self.zoomin3.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/in.png")))
-        self.zoomout3.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/out.png")))
-
-        self.up1.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/up.png")))
-        self.down1.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/down.png")))
-        self.left1.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/left.png")))
-        self.right1.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/right.png")))
-
-        self.up2.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/up.png")))
-        self.down2.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/down.png")))
-        self.left2.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/left.png")))
-        self.right2.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/right.png")))
         
-        self.up3.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/up.png")))
-        self.down3.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/down.png")))
-        self.left3.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/left.png")))
-        self.right3.setIcon(QIcon(os.path.join(THIS_FOLDER,"icons/right.png")))
+    ################## About message ####################
 
-
-        #resume buttoms actions
-        self.resume1.clicked.connect(lambda :self.timer1.start())
-        self.resume2.clicked.connect(lambda :self.timer2.start())
-        self.resume3.clicked.connect(lambda :self.timer3.start())
-
-        self.pause1.clicked.connect(lambda :self.timer1.stop())
-        self.pause2.clicked.connect(lambda :self.timer2.stop())
-        self.pause3.clicked.connect(lambda :self.timer3.stop())
-
-        self.zoomin1.clicked.connect(lambda :self.zi_1())
-        self.zoomin2.clicked.connect(lambda :self.zi_2())
-        self.zoomin3.clicked.connect(lambda :self.zi_3())
-        self.zoomout1.clicked.connect(lambda :self.zo_1())
-        self.zoomout2.clicked.connect(lambda :self.zo_2())
-        self.zoomout3.clicked.connect(lambda :self.zo_3())
-        
-        #####################shortcuts
-        self.zoomout1.setShortcut(_translate("MainWindow", "Ctrl+x"))
-        self.zoomout2.setShortcut(_translate("MainWindow", "Ctrl+y"))
-        self.zoomout3.setShortcut(_translate("MainWindow", "Ctrl+z"))
-        self.zoomin1.setShortcut(_translate("MainWindow", "Ctrl+a"))
-        self.zoomin2.setShortcut(_translate("MainWindow", "Ctrl+b"))
-        self.zoomin3.setShortcut(_translate("MainWindow", "Ctrl+c"))
-        self.resume1.setShortcut(_translate("MainWindow", "Ctrl+1"))
-        self.resume2.setShortcut(_translate("MainWindow", "Ctrl+2"))
-        self.resume3.setShortcut(_translate("MainWindow", "Ctrl+3"))
-        self.pause1.setShortcut(_translate("MainWindow", "Ctrl+4"))
-        self.pause1.setShortcut(_translate("MainWindow", "Ctrl+5"))
-        self.pause3.setShortcut(_translate("MainWindow", "Ctrl+6"))
-        self.savePDF.setShortcut(_translate("MainWindow", "Ctrl+s"))
-        
-        
-        #aaahoooooooooooooooooooooo save pdf ******************
-        
-        self.savePDF.triggered.connect(lambda:self.savepdf())
-       
-        
-       
-        #***********************scrolling button**************
-        self.right1.clicked.connect(lambda :self.scrollR(1))
-        self.right2.clicked.connect(lambda :self.scrollR(2))
-        self.right3.clicked.connect(lambda :self.scrollR(3))
-        self.left1.clicked.connect(lambda :self.scrollL(1))
-        self.left2.clicked.connect(lambda :self.scrollL(2))
-        self.left3.clicked.connect(lambda :self.scrollL(3))
-        self.up1.clicked.connect(lambda :self.scrollU(1))
-        self.up2.clicked.connect(lambda :self.scrollU(2))
-        self.up3.clicked.connect(lambda :self.scrollU(3))
-        self.down1.clicked.connect(lambda :self.scrollD(1))
-        self.down2.clicked.connect(lambda :self.scrollD(2))
-        self.down3.clicked.connect(lambda :self.scrollD(3))
-        #clear event
-        self.clear1.clicked.connect(lambda:self.delete(1))
-        self.clear2.clicked.connect(lambda:self.delete(2))
-        self.clear3.clicked.connect(lambda:self.delete(3))
-
-
-
-            ############## Hilal Events #############
-        self.close.triggered.connect(sys.exit)
-        self.about.triggered.connect(self.showDialog)
-        self.open_ch1.triggered.connect(lambda: self.play1())
-        self.open_ch2.triggered.connect(lambda: self.play2())
-        self.open_ch3.triggered.connect(lambda: self.play3())
-
-        self.show_ch1.stateChanged.connect(lambda: self.hide1(self.show_ch1,self.graphicsView))
-        self.show_ch2.stateChanged.connect(lambda: self.hide2(self.show_ch2,self.graphicsView_2))
-        self.show_ch3.stateChanged.connect(lambda: self.hide3(self.show_ch3,self.graphicsView_3))
-        #self.show_spect.stateChanged.connect(lambda: self.hide(self.show_spect,self.tabWidget))
-
-        self.spectro1.clicked.connect(lambda: self.showwindow(1))
-        self.spectro2.clicked.connect(lambda: self.showwindow(2))
-        self.spectro3.clicked.connect(lambda: self.showwindow(3))
-
-        ############## Hilal Functions ################
-        
-     #About message
     def showDialog(self):
         QMessageBox.information(self,"About","Signal Viewer is a software for visualizing signals \n (c) 2021 SBME Cairo University")
 
-     #Hide Channel function
+    ############### Hide Channels function ######################
+
     def hide1 (self,channel,graphicsView):
         if (channel.isChecked()):
             graphicsView.show()
@@ -1042,7 +1065,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
             graphicsView.hide()
 
 
- #################### Spectrogram ###########################
+    #################### Spectrogram ###########################
 
     def showwindow(self,ch):
         if 1 == ch:
@@ -1091,7 +1114,8 @@ class Ui_mainwindow(QtGui.QMainWindow):
 
         shutil.rmtree(dirpath)
 
-###########################scrolling on x axis ##############################
+    ########################### Scrolling on x axis ##############################
+
     def scrollR(self,ch):
         if ch==1:
             self.sc_x1 +=0.1
@@ -1119,7 +1143,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
              self.sc_x3 -=0.1
              self.graphicsView_3.setXRange(self.sc_x3,self.sc_x3 +1)
 
-##########################scrollling on y axis######################
+    ########################## Scrollling on y axis ######################
     
     def scrollU(self,ch):
         if ch==1:
@@ -1153,7 +1177,6 @@ class Ui_mainwindow(QtGui.QMainWindow):
 
 
 
-############################## end hilal #####################################
 
 
 
