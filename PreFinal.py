@@ -27,7 +27,7 @@ class Ui_mainwindow(QtGui.QMainWindow):
     def setupUi(self, mainwindow):
         mainwindow.setObjectName("mainwindow")
         mainwindow.setEnabled(True)
-        mainwindow.resize(1347, 897)
+        mainwindow.resize(1450, 897)
         font = QtGui.QFont()
         font.setPointSize(6)
         mainwindow.setFont(font)
