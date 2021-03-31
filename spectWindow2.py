@@ -24,6 +24,19 @@ class Ui_spectWindow2(object):
 
         self.retranslateUi(spectWindow2)
         QtCore.QMetaObject.connectSlotsByName(spectWindow2)
+        spectWindow2.setStyleSheet("QMainWindow{\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+
+"QWidget\n"
+"{\n"
+"background-color:  #d4d5dd;"
+"}\n"
+"\n"
+"")
 
     def retranslateUi(self, spectWindow2):
         _translate = QtCore.QCoreApplication.translate
