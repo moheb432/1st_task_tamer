@@ -1,4 +1,7 @@
 # data signal viewer(pyqt5)
+## description
+ this is desktop app used to view the signal in a real time series with its spectrogram
+ with some features which is :
 ## Features
 - 3 real time signal viewer  
 - pop up spectrogram for this signal
